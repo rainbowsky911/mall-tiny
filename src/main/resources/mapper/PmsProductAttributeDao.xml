@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.macro.mall.tiny.modules.pms.dao.PmsProductAttributeDao">
+
+    <resultMap type="com.macro.mall.tiny.modules.pms.entity.PmsProductAttribute" id="PmsProductAttributeMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="productAttributeCategoryId" column="product_attribute_category_id" jdbcType="INTEGER"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="selectType" column="select_type" jdbcType="INTEGER"/>
+        <result property="inputType" column="input_type" jdbcType="INTEGER"/>
+        <result property="inputList" column="input_list" jdbcType="VARCHAR"/>
+        <result property="sort" column="sort" jdbcType="INTEGER"/>
+        <result property="filterType" column="filter_type" jdbcType="INTEGER"/>
+        <result property="searchType" column="search_type" jdbcType="INTEGER"/>
+        <result property="relatedStatus" column="related_status" jdbcType="INTEGER"/>
+        <result property="handAddStatus" column="hand_add_status" jdbcType="INTEGER"/>
+        <result property="type" column="type" jdbcType="INTEGER"/>
+    </resultMap>
+
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into mall.pms_product_attribute(product_attribute_category_id, name, select_type, input_type, input_list, sort, filter_type, search_type, related_status, hand_add_status, type)
+        values (#{productAttributeCategoryId}, #{name}, #{selectType}, #{inputType}, #{inputList}, #{sort}, #{filterType}, #{searchType}, #{relatedStatus}, #{handAddStatus}, #{type})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update mall.pms_product_attribute
+        <set>
+            <if test="productAttributeCategoryId != null">
+                product_attribute_category_id = #{productAttributeCategoryId},
+            </if>
+            <if test="name != null and name != ''">
+                name = #{name},
+            </if>
+            <if test="selectType != null">
+                select_type = #{selectType},
+            </if>
+            <if test="inputType != null">
+                input_type = #{inputType},
+            </if>
+            <if test="inputList != null and inputList != ''">
+                input_list = #{inputList},
+            </if>
+            <if test="sort != null">
+                sort = #{sort},
+            </if>
+            <if test="filterType != null">
+                filter_type = #{filterType},
+            </if>
+            <if test="searchType != null">
+                search_type = #{searchType},
+            </if>
+            <if test="relatedStatus != null">
+                related_status = #{relatedStatus},
+            </if>
+            <if test="handAddStatus != null">
+                hand_add_status = #{handAddStatus},
+            </if>
+            <if test="type != null">
+                type = #{type},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from mall.pms_product_attribute where id = #{id}
+    </delete>
+
+
+    <select id="getProductAttrInfo" resultType="com.macro.mall.tiny.modules.pms.dto.ProductAttrInfo">
+
+            SELECT
+                pa.id attributeId,
+                pac.id attributeCategoryId
+            FROM
+                pms_product_category_attribute_relation pcar
+                LEFT JOIN pms_product_attribute pa ON pa.id = pcar.product_attribute_id
+                LEFT JOIN pms_product_attribute_category pac ON pa.product_attribute_category_id = pac.id
+            WHERE
+                pcar.product_category_id = #{productCategoryId}
+    </select>
+
+</mapper>

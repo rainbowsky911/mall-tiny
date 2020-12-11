@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.macro.mall.tiny.modules.pms.dao.PmsCommentReplayDao">
+
+    <resultMap type="com.macro.mall.tiny.modules.pms.entity.PmsCommentReplay" id="PmsCommentReplayMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="commentId" column="comment_id" jdbcType="INTEGER"/>
+        <result property="memberNickName" column="member_nick_name" jdbcType="VARCHAR"/>
+        <result property="memberIcon" column="member_icon" jdbcType="VARCHAR"/>
+        <result property="content" column="content" jdbcType="VARCHAR"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="type" column="type" jdbcType="INTEGER"/>
+    </resultMap>
+
+
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into mall.pms_comment_replay(comment_id, member_nick_name, member_icon, content, create_time, type)
+        values (#{commentId}, #{memberNickName}, #{memberIcon}, #{content}, #{createTime}, #{type})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update mall.pms_comment_replay
+        <set>
+            <if test="commentId != null">
+                comment_id = #{commentId},
+            </if>
+            <if test="memberNickName != null and memberNickName != ''">
+                member_nick_name = #{memberNickName},
+            </if>
+            <if test="memberIcon != null and memberIcon != ''">
+                member_icon = #{memberIcon},
+            </if>
+            <if test="content != null and content != ''">
+                content = #{content},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime},
+            </if>
+            <if test="type != null">
+                type = #{type},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from mall.pms_comment_replay where id = #{id}
+    </delete>
+
+</mapper>

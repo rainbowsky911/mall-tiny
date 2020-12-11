@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.macro.mall.tiny.modules.pms.dao.PmsCommentDao">
+
+    <resultMap type="com.macro.mall.tiny.modules.pms.entity.PmsComment" id="PmsCommentMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="productId" column="product_id" jdbcType="INTEGER"/>
+        <result property="memberNickName" column="member_nick_name" jdbcType="VARCHAR"/>
+        <result property="productName" column="product_name" jdbcType="VARCHAR"/>
+        <result property="star" column="star" jdbcType="INTEGER"/>
+        <result property="memberIp" column="member_ip" jdbcType="VARCHAR"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="showStatus" column="show_status" jdbcType="INTEGER"/>
+        <result property="productAttribute" column="product_attribute" jdbcType="VARCHAR"/>
+        <result property="collectCouont" column="collect_couont" jdbcType="INTEGER"/>
+        <result property="readCount" column="read_count" jdbcType="INTEGER"/>
+        <result property="content" column="content" jdbcType="VARCHAR"/>
+        <result property="pics" column="pics" jdbcType="VARCHAR"/>
+        <result property="memberIcon" column="member_icon" jdbcType="VARCHAR"/>
+        <result property="replayCount" column="replay_count" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into mall.pms_comment(product_id, member_nick_name, product_name, star, member_ip, create_time, show_status, product_attribute, collect_couont, read_count, content, pics, member_icon, replay_count)
+        values (#{productId}, #{memberNickName}, #{productName}, #{star}, #{memberIp}, #{createTime}, #{showStatus}, #{productAttribute}, #{collectCouont}, #{readCount}, #{content}, #{pics}, #{memberIcon}, #{replayCount})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update mall.pms_comment
+        <set>
+            <if test="productId != null">
+                product_id = #{productId},
+            </if>
+            <if test="memberNickName != null and memberNickName != ''">
+                member_nick_name = #{memberNickName},
+            </if>
+            <if test="productName != null and productName != ''">
+                product_name = #{productName},
+            </if>
+            <if test="star != null">
+                star = #{star},
+            </if>
+            <if test="memberIp != null and memberIp != ''">
+                member_ip = #{memberIp},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime},
+            </if>
+            <if test="showStatus != null">
+                show_status = #{showStatus},
+            </if>
+            <if test="productAttribute != null and productAttribute != ''">
+                product_attribute = #{productAttribute},
+            </if>
+            <if test="collectCouont != null">
+                collect_couont = #{collectCouont},
+            </if>
+            <if test="readCount != null">
+                read_count = #{readCount},
+            </if>
+            <if test="content != null and content != ''">
+                content = #{content},
+            </if>
+            <if test="pics != null and pics != ''">
+                pics = #{pics},
+            </if>
+            <if test="memberIcon != null and memberIcon != ''">
+                member_icon = #{memberIcon},
+            </if>
+            <if test="replayCount != null">
+                replay_count = #{replayCount},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from mall.pms_comment where id = #{id}
+    </delete>
+
+</mapper>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.macro.mall.tiny.modules.pms.dao.PmsSkuStockDao">
+
+    <resultMap type="com.macro.mall.tiny.modules.pms.entity.PmsSkuStock" id="PmsSkuStockMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="productId" column="product_id" jdbcType="INTEGER"/>
+        <result property="skuCode" column="sku_code" jdbcType="VARCHAR"/>
+        <result property="price" column="price" jdbcType="NUMERIC"/>
+        <result property="stock" column="stock" jdbcType="INTEGER"/>
+        <result property="lowStock" column="low_stock" jdbcType="INTEGER"/>
+        <result property="pic" column="pic" jdbcType="VARCHAR"/>
+        <result property="sale" column="sale" jdbcType="INTEGER"/>
+        <result property="promotionPrice" column="promotion_price" jdbcType="NUMERIC"/>
+        <result property="lockStock" column="lock_stock" jdbcType="INTEGER"/>
+        <result property="spData" column="sp_data" jdbcType="VARCHAR"/>
+    </resultMap>
+
+
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into mall.pms_sku_stock(product_id, sku_code, price, stock, low_stock, pic, sale, promotion_price, lock_stock, sp_data)
+        values (#{productId}, #{skuCode}, #{price}, #{stock}, #{lowStock}, #{pic}, #{sale}, #{promotionPrice}, #{lockStock}, #{spData})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update mall.pms_sku_stock
+        <set>
+            <if test="productId != null">
+                product_id = #{productId},
+            </if>
+            <if test="skuCode != null and skuCode != ''">
+                sku_code = #{skuCode},
+            </if>
+            <if test="price != null">
+                price = #{price},
+            </if>
+            <if test="stock != null">
+                stock = #{stock},
+            </if>
+            <if test="lowStock != null">
+                low_stock = #{lowStock},
+            </if>
+            <if test="pic != null and pic != ''">
+                pic = #{pic},
+            </if>
+            <if test="sale != null">
+                sale = #{sale},
+            </if>
+            <if test="promotionPrice != null">
+                promotion_price = #{promotionPrice},
+            </if>
+            <if test="lockStock != null">
+                lock_stock = #{lockStock},
+            </if>
+            <if test="spData != null and spData != ''">
+                sp_data = #{spData},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from mall.pms_sku_stock where id = #{id}
+    </delete>
+
+</mapper>

@@ -5,12 +5,16 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.api.ApiController;
 import com.baomidou.mybatisplus.extension.api.R;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.macro.mall.tiny.common.api.CommonPage;
 import com.macro.mall.tiny.common.api.CommonResult;
+import com.macro.mall.tiny.modules.pms.dto.PmsProductAttributeParam;
 import com.macro.mall.tiny.modules.pms.entity.PmsProductAttributeCategory;
 import com.macro.mall.tiny.modules.pms.service.PmsProductAttributeCategoryService;
 import com.macro.mall.tiny.modules.ums.dto.PmsProductAttributeCategoryItem;
+import com.macro.mall.tiny.modules.ums.model.UmsAdmin;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -41,5 +45,25 @@ public class PmsProductAttributeCategoryController extends ApiController {
         return CommonResult.success(productAttributeCategoryResultList);
     }
 
+    @ApiOperation("分页获取所有商品属性分类")
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
+    @ResponseBody
+    public CommonResult<CommonPage<PmsProductAttributeCategory>> getList(@RequestParam(defaultValue = "5") Integer pageSize, @RequestParam(defaultValue = "1") Integer pageNum) {
+        Page<PmsProductAttributeCategory> productAttributeCategoryList = pmsProductAttributeCategoryService.getList(pageSize, pageNum);
+        return CommonResult.success(CommonPage.restPage(productAttributeCategoryList));
+    }
+
+
+    @ApiOperation("修改商品属性分类")
+    @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
+    @ResponseBody
+    public CommonResult update(@PathVariable Long id, @RequestParam String name) {
+        int count = pmsProductAttributeCategoryService.update(id, name);
+        if (count > 0) {
+            return CommonResult.success(count);
+        } else {
+            return CommonResult.failed();
+        }
+    }
 
 }

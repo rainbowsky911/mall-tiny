@@ -28,59 +28,5 @@ public class PmsAlbumController extends ApiController {
     @Resource
     private PmsAlbumService pmsAlbumService;
 
-    /**
-     * 分页查询所有数据
-     *
-     * @param page     分页对象
-     * @param pmsAlbum 查询实体
-     * @return 所有数据
-     */
-    @GetMapping
-    public R selectAll(Page<PmsAlbum> page, PmsAlbum pmsAlbum) {
-        return success(this.pmsAlbumService.page(page, new QueryWrapper<>(pmsAlbum)));
-    }
 
-    /**
-     * 通过主键查询单条数据
-     *
-     * @param id 主键
-     * @return 单条数据
-     */
-    @GetMapping("{id}")
-    public R selectOne(@PathVariable Serializable id) {
-        return success(this.pmsAlbumService.getById(id));
-    }
-
-    /**
-     * 新增数据
-     *
-     * @param pmsAlbum 实体对象
-     * @return 新增结果
-     */
-    @PostMapping
-    public R insert(@RequestBody PmsAlbum pmsAlbum) {
-        return success(this.pmsAlbumService.save(pmsAlbum));
-    }
-
-    /**
-     * 修改数据
-     *
-     * @param pmsAlbum 实体对象
-     * @return 修改结果
-     */
-    @PutMapping
-    public R update(@RequestBody PmsAlbum pmsAlbum) {
-        return success(this.pmsAlbumService.updateById(pmsAlbum));
-    }
-
-    /**
-     * 删除数据
-     *
-     * @param idList 主键结合
-     * @return 删除结果
-     */
-    @DeleteMapping
-    public R delete(@RequestParam("idList") List<Long> idList) {
-        return success(this.pmsAlbumService.removeByIds(idList));
-    }
 }

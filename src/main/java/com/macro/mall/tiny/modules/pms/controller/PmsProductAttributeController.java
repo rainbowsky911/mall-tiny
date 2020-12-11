@@ -5,11 +5,15 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.api.ApiController;
 import com.baomidou.mybatisplus.extension.api.R;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.macro.mall.tiny.common.api.CommonPage;
 import com.macro.mall.tiny.common.api.CommonResult;
+import com.macro.mall.tiny.modules.pms.dto.PmsProductAttributeParam;
 import com.macro.mall.tiny.modules.pms.dto.ProductAttrInfo;
 import com.macro.mall.tiny.modules.pms.entity.PmsProductAttribute;
+import com.macro.mall.tiny.modules.pms.entity.PmsProductAttributeCategory;
 import com.macro.mall.tiny.modules.pms.service.PmsProductAttributeService;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -47,4 +51,46 @@ public class PmsProductAttributeController extends ApiController {
         List<ProductAttrInfo> productAttrInfoList = pmsProductAttributeService.getProductAttrInfo(productCategoryId);
         return CommonResult.success(productAttrInfoList);
     }
+
+
+    @ApiOperation("分页获取所有商品属性分类")
+    @RequestMapping(value = "/list/{id}", method = RequestMethod.GET)
+    @ResponseBody
+    public CommonResult<CommonPage<PmsProductAttribute>> getList(
+            @PathVariable ("id") Long id,
+            @RequestParam(defaultValue = "5") Integer pageSize,
+            @RequestParam(defaultValue = "1") Integer pageNum,
+            @RequestParam ("type") Integer type) {
+        Page<PmsProductAttribute> productAttributeCategoryList =
+                pmsProductAttributeService.getList(id,pageSize, pageNum,type);
+        return CommonResult.success(CommonPage.restPage(productAttributeCategoryList));
+    }
+
+
+    @ApiOperation("修改商品属性")
+    @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
+    @ResponseBody
+    public CommonResult updateAttrbute(
+            @PathVariable("id") Long id,
+             @RequestBody PmsProductAttributeParam pmsProductAttributeParam) {
+        int count = pmsProductAttributeService.updatePmsProductAttribute(id, pmsProductAttributeParam);
+        if (count > 0) {
+            return CommonResult.success(count);
+        } else {
+            return CommonResult.failed();
+        }
+    }
+
+    @ApiOperation("添加商品属性信息")
+    @RequestMapping(value = "/create", method = RequestMethod.POST)
+    @ResponseBody
+    public CommonResult create(@RequestBody PmsProductAttributeParam productAttributeParam) {
+        int count = pmsProductAttributeService.create(productAttributeParam);
+        if (count > 0) {
+            return CommonResult.success(count);
+        } else {
+            return CommonResult.failed();
+        }
+    }
+
 }

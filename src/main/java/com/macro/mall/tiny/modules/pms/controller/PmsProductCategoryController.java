@@ -63,8 +63,6 @@ public class PmsProductCategoryController extends ApiController {
             return CommonResult.failed();
         }
     }
-
-
     @ApiOperation("修改显示状态")
     @RequestMapping(value = "/update/showStatus", method = RequestMethod.POST)
     public  CommonResult updateShowStatus(@RequestParam ("ids")Long ids,@RequestParam("showStatus") Integer showStatus ){

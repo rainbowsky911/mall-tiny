@@ -28,59 +28,5 @@ public class PmsProductCategoryAttributeRelationController extends ApiController
     @Resource
     private PmsProductCategoryAttributeRelationService pmsProductCategoryAttributeRelationService;
 
-    /**
-     * 分页查询所有数据
-     *
-     * @param page                                分页对象
-     * @param pmsProductCategoryAttributeRelation 查询实体
-     * @return 所有数据
-     */
-    @GetMapping
-    public R selectAll(Page<PmsProductCategoryAttributeRelation> page, PmsProductCategoryAttributeRelation pmsProductCategoryAttributeRelation) {
-        return success(this.pmsProductCategoryAttributeRelationService.page(page, new QueryWrapper<>(pmsProductCategoryAttributeRelation)));
-    }
 
-    /**
-     * 通过主键查询单条数据
-     *
-     * @param id 主键
-     * @return 单条数据
-     */
-    @GetMapping("{id}")
-    public R selectOne(@PathVariable Serializable id) {
-        return success(this.pmsProductCategoryAttributeRelationService.getById(id));
-    }
-
-    /**
-     * 新增数据
-     *
-     * @param pmsProductCategoryAttributeRelation 实体对象
-     * @return 新增结果
-     */
-    @PostMapping
-    public R insert(@RequestBody PmsProductCategoryAttributeRelation pmsProductCategoryAttributeRelation) {
-        return success(this.pmsProductCategoryAttributeRelationService.save(pmsProductCategoryAttributeRelation));
-    }
-
-    /**
-     * 修改数据
-     *
-     * @param pmsProductCategoryAttributeRelation 实体对象
-     * @return 修改结果
-     */
-    @PutMapping
-    public R update(@RequestBody PmsProductCategoryAttributeRelation pmsProductCategoryAttributeRelation) {
-        return success(this.pmsProductCategoryAttributeRelationService.updateById(pmsProductCategoryAttributeRelation));
-    }
-
-    /**
-     * 删除数据
-     *
-     * @param idList 主键结合
-     * @return 删除结果
-     */
-    @DeleteMapping
-    public R delete(@RequestParam("idList") List<Long> idList) {
-        return success(this.pmsProductCategoryAttributeRelationService.removeByIds(idList));
-    }
 }

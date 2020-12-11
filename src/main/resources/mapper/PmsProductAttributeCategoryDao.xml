@@ -51,32 +51,5 @@
 
 
 
-    <!--新增所有列-->
-    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
-        insert into mall.pms_product_attribute_category(name, attribute_count, param_count)
-        values (#{name}, #{attributeCount}, #{paramCount})
-    </insert>
-
-    <!--通过主键修改数据-->
-    <update id="update">
-        update mall.pms_product_attribute_category
-        <set>
-            <if test="name != null and name != ''">
-                name = #{name},
-            </if>
-            <if test="attributeCount != null">
-                attribute_count = #{attributeCount},
-            </if>
-            <if test="paramCount != null">
-                param_count = #{paramCount},
-            </if>
-        </set>
-        where id = #{id}
-    </update>
-
-    <!--通过主键删除-->
-    <delete id="deleteById">
-        delete from mall.pms_product_attribute_category where id = #{id}
-    </delete>
 
 </mapper>

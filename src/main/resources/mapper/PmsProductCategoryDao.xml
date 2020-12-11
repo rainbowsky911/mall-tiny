@@ -18,56 +18,6 @@
     </resultMap>
 
 
-    <!--新增所有列-->
-    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
-        insert into mall.pms_product_category(parent_id, name, level, product_count, product_unit, nav_status, show_status, sort, icon, keywords, description)
-        values (#{parentId}, #{name}, #{level}, #{productCount}, #{productUnit}, #{navStatus}, #{showStatus}, #{sort}, #{icon}, #{keywords}, #{description})
-    </insert>
 
-    <!--通过主键修改数据-->
-    <update id="update">
-        update mall.pms_product_category
-        <set>
-            <if test="parentId != null">
-                parent_id = #{parentId},
-            </if>
-            <if test="name != null and name != ''">
-                name = #{name},
-            </if>
-            <if test="level != null">
-                level = #{level},
-            </if>
-            <if test="productCount != null">
-                product_count = #{productCount},
-            </if>
-            <if test="productUnit != null and productUnit != ''">
-                product_unit = #{productUnit},
-            </if>
-            <if test="navStatus != null">
-                nav_status = #{navStatus},
-            </if>
-            <if test="showStatus != null">
-                show_status = #{showStatus},
-            </if>
-            <if test="sort != null">
-                sort = #{sort},
-            </if>
-            <if test="icon != null and icon != ''">
-                icon = #{icon},
-            </if>
-            <if test="keywords != null and keywords != ''">
-                keywords = #{keywords},
-            </if>
-            <if test="description != null and description != ''">
-                description = #{description},
-            </if>
-        </set>
-        where id = #{id}
-    </update>
-
-    <!--通过主键删除-->
-    <delete id="deleteById">
-        delete from mall.pms_product_category where id = #{id}
-    </delete>
 
 </mapper>

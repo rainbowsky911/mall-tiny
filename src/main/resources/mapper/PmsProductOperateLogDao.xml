@@ -19,56 +19,6 @@
 
 
 
-    <!--新增所有列-->
-    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
-        insert into mall.pms_product_operate_log(product_id, price_old, price_new, sale_price_old, sale_price_new, gift_point_old, gift_point_new, use_point_limit_old, use_point_limit_new, operate_man, create_time)
-        values (#{productId}, #{priceOld}, #{priceNew}, #{salePriceOld}, #{salePriceNew}, #{giftPointOld}, #{giftPointNew}, #{usePointLimitOld}, #{usePointLimitNew}, #{operateMan}, #{createTime})
-    </insert>
 
-    <!--通过主键修改数据-->
-    <update id="update">
-        update mall.pms_product_operate_log
-        <set>
-            <if test="productId != null">
-                product_id = #{productId},
-            </if>
-            <if test="priceOld != null">
-                price_old = #{priceOld},
-            </if>
-            <if test="priceNew != null">
-                price_new = #{priceNew},
-            </if>
-            <if test="salePriceOld != null">
-                sale_price_old = #{salePriceOld},
-            </if>
-            <if test="salePriceNew != null">
-                sale_price_new = #{salePriceNew},
-            </if>
-            <if test="giftPointOld != null">
-                gift_point_old = #{giftPointOld},
-            </if>
-            <if test="giftPointNew != null">
-                gift_point_new = #{giftPointNew},
-            </if>
-            <if test="usePointLimitOld != null">
-                use_point_limit_old = #{usePointLimitOld},
-            </if>
-            <if test="usePointLimitNew != null">
-                use_point_limit_new = #{usePointLimitNew},
-            </if>
-            <if test="operateMan != null and operateMan != ''">
-                operate_man = #{operateMan},
-            </if>
-            <if test="createTime != null">
-                create_time = #{createTime},
-            </if>
-        </set>
-        where id = #{id}
-    </update>
-
-    <!--通过主键删除-->
-    <delete id="deleteById">
-        delete from mall.pms_product_operate_log where id = #{id}
-    </delete>
 
 </mapper>

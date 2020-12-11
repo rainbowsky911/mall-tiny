@@ -42,8 +42,9 @@ public class PmsProductCategoryServiceImpl extends ServiceImpl<PmsProductCategor
         boolean update = update(lambda);
         if (update) {
             return 1;
+        }else {
+            return 0;
         }
-        return 0;
     }
 
     @Override
@@ -54,7 +55,8 @@ public class PmsProductCategoryServiceImpl extends ServiceImpl<PmsProductCategor
         boolean update = update(lambda);
         if (update) {
             return 1;
+        }else {
+            return 0;
         }
-        return 0;
     }
 }

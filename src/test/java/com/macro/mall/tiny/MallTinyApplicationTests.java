@@ -1,6 +1,8 @@
 package com.macro.mall.tiny;
 
+import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.macro.mall.tiny.modules.pms.dto.ProductAttrInfo;
+import com.macro.mall.tiny.modules.pms.entity.PmsBrand;
 import com.macro.mall.tiny.modules.pms.entity.PmsProductAttribute;
 import com.macro.mall.tiny.modules.pms.service.PmsProductAttributeService;
 import org.junit.Test;
@@ -27,5 +29,7 @@ public class MallTinyApplicationTests {
             System.out.println(e);
         });
     }
+
+
 
 }

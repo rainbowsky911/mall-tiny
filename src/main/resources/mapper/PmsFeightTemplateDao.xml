@@ -15,44 +15,6 @@
 
 
 
-    <!--新增所有列-->
-    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
-        insert into mall.pms_feight_template(name, charge_type, first_weight, first_fee, continue_weight, continme_fee, dest)
-        values (#{name}, #{chargeType}, #{firstWeight}, #{firstFee}, #{continueWeight}, #{continmeFee}, #{dest})
-    </insert>
 
-    <!--通过主键修改数据-->
-    <update id="update">
-        update mall.pms_feight_template
-        <set>
-            <if test="name != null and name != ''">
-                name = #{name},
-            </if>
-            <if test="chargeType != null">
-                charge_type = #{chargeType},
-            </if>
-            <if test="firstWeight != null">
-                first_weight = #{firstWeight},
-            </if>
-            <if test="firstFee != null">
-                first_fee = #{firstFee},
-            </if>
-            <if test="continueWeight != null">
-                continue_weight = #{continueWeight},
-            </if>
-            <if test="continmeFee != null">
-                continme_fee = #{continmeFee},
-            </if>
-            <if test="dest != null and dest != ''">
-                dest = #{dest},
-            </if>
-        </set>
-        where id = #{id}
-    </update>
-
-    <!--通过主键删除-->
-    <delete id="deleteById">
-        delete from mall.pms_feight_template where id = #{id}
-    </delete>
 
 </mapper>

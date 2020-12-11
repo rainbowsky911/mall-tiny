@@ -12,35 +12,5 @@
 
 
 
-    <!--新增所有列-->
-    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
-        insert into mall.pms_product_ladder(product_id, count, discount, price)
-        values (#{productId}, #{count}, #{discount}, #{price})
-    </insert>
-
-    <!--通过主键修改数据-->
-    <update id="update">
-        update mall.pms_product_ladder
-        <set>
-            <if test="productId != null">
-                product_id = #{productId},
-            </if>
-            <if test="count != null">
-                count = #{count},
-            </if>
-            <if test="discount != null">
-                discount = #{discount},
-            </if>
-            <if test="price != null">
-                price = #{price},
-            </if>
-        </set>
-        where id = #{id}
-    </update>
-
-    <!--通过主键删除-->
-    <delete id="deleteById">
-        delete from mall.pms_product_ladder where id = #{id}
-    </delete>
 
 </mapper>

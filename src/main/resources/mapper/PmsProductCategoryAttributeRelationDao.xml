@@ -10,29 +10,6 @@
     </resultMap>
 
 
-    <!--新增所有列-->
-    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
-        insert into mall.pms_product_category_attribute_relation(product_category_id, product_attribute_id)
-        values (#{productCategoryId}, #{productAttributeId})
-    </insert>
 
-    <!--通过主键修改数据-->
-    <update id="update">
-        update mall.pms_product_category_attribute_relation
-        <set>
-            <if test="productCategoryId != null">
-                product_category_id = #{productCategoryId},
-            </if>
-            <if test="productAttributeId != null">
-                product_attribute_id = #{productAttributeId},
-            </if>
-        </set>
-        where id = #{id}
-    </update>
-
-    <!--通过主键删除-->
-    <delete id="deleteById">
-        delete from mall.pms_product_category_attribute_relation where id = #{id}
-    </delete>
 
 </mapper>

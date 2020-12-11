@@ -12,35 +12,5 @@
 
 
 
-    <!--新增所有列-->
-    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
-        insert into mall.pms_member_price(product_id, member_level_id, member_price, member_level_name)
-        values (#{productId}, #{memberLevelId}, #{memberPrice}, #{memberLevelName})
-    </insert>
-
-    <!--通过主键修改数据-->
-    <update id="update">
-        update mall.pms_member_price
-        <set>
-            <if test="productId != null">
-                product_id = #{productId},
-            </if>
-            <if test="memberLevelId != null">
-                member_level_id = #{memberLevelId},
-            </if>
-            <if test="memberPrice != null">
-                member_price = #{memberPrice},
-            </if>
-            <if test="memberLevelName != null and memberLevelName != ''">
-                member_level_name = #{memberLevelName},
-            </if>
-        </set>
-        where id = #{id}
-    </update>
-
-    <!--通过主键删除-->
-    <delete id="deleteById">
-        delete from mall.pms_member_price where id = #{id}
-    </delete>
 
 </mapper>

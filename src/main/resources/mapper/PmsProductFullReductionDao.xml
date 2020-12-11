@@ -10,32 +10,6 @@
     </resultMap>
 
 
-    <!--新增所有列-->
-    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
-        insert into mall.pms_product_full_reduction(product_id, full_price, reduce_price)
-        values (#{productId}, #{fullPrice}, #{reducePrice})
-    </insert>
 
-    <!--通过主键修改数据-->
-    <update id="update">
-        update mall.pms_product_full_reduction
-        <set>
-            <if test="productId != null">
-                product_id = #{productId},
-            </if>
-            <if test="fullPrice != null">
-                full_price = #{fullPrice},
-            </if>
-            <if test="reducePrice != null">
-                reduce_price = #{reducePrice},
-            </if>
-        </set>
-        where id = #{id}
-    </update>
-
-    <!--通过主键删除-->
-    <delete id="deleteById">
-        delete from mall.pms_product_full_reduction where id = #{id}
-    </delete>
 
 </mapper>

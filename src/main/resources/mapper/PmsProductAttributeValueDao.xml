@@ -11,32 +11,6 @@
 
 
 
-    <!--新增所有列-->
-    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
-        insert into mall.pms_product_attribute_value(product_id, product_attribute_id, value)
-        values (#{productId}, #{productAttributeId}, #{value})
-    </insert>
 
-    <!--通过主键修改数据-->
-    <update id="update">
-        update mall.pms_product_attribute_value
-        <set>
-            <if test="productId != null">
-                product_id = #{productId},
-            </if>
-            <if test="productAttributeId != null">
-                product_attribute_id = #{productAttributeId},
-            </if>
-            <if test="value != null and value != ''">
-                value = #{value},
-            </if>
-        </set>
-        where id = #{id}
-    </update>
-
-    <!--通过主键删除-->
-    <delete id="deleteById">
-        delete from mall.pms_product_attribute_value where id = #{id}
-    </delete>
 
 </mapper>

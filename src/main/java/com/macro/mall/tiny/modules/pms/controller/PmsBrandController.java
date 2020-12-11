@@ -5,8 +5,14 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.api.ApiController;
 import com.baomidou.mybatisplus.extension.api.R;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.macro.mall.tiny.common.api.CommonPage;
+import com.macro.mall.tiny.common.api.CommonResult;
+import com.macro.mall.tiny.modules.pms.dto.PmsBrandParam;
 import com.macro.mall.tiny.modules.pms.entity.PmsBrand;
+import com.macro.mall.tiny.modules.pms.entity.PmsProductCategory;
 import com.macro.mall.tiny.modules.pms.service.PmsBrandService;
+import io.swagger.annotations.ApiOperation;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -20,7 +26,7 @@ import java.util.List;
  * @since 2020-12-11 13:40:28
  */
 @RestController
-@RequestMapping("pmsBrand")
+@RequestMapping("brand")
 public class PmsBrandController extends ApiController {
     /**
      * 服务对象
@@ -28,59 +34,61 @@ public class PmsBrandController extends ApiController {
     @Resource
     private PmsBrandService pmsBrandService;
 
-    /**
-     * 分页查询所有数据
-     *
-     * @param page     分页对象
-     * @param pmsBrand 查询实体
-     * @return 所有数据
-     */
-    @GetMapping
-    public R selectAll(Page<PmsBrand> page, PmsBrand pmsBrand) {
-        return success(this.pmsBrandService.page(page, new QueryWrapper<>(pmsBrand)));
+    @ApiOperation("商品品牌列表")
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
+    @ResponseBody
+    public CommonResult<CommonPage<PmsBrand>> getList(
+            @RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize,
+            @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum) {
+        Page<PmsBrand> pmsProductCategoryList = pmsBrandService.getList(pageSize, pageNum);
+        return CommonResult.success(CommonPage.restPage(pmsProductCategoryList));
     }
 
-    /**
-     * 通过主键查询单条数据
-     *
-     * @param id 主键
-     * @return 单条数据
-     */
-    @GetMapping("{id}")
-    public R selectOne(@PathVariable Serializable id) {
-        return success(this.pmsBrandService.getById(id));
+    @ApiOperation("修改品牌制造商状态")
+    @RequestMapping(value = "/update/factoryStatus", method = RequestMethod.POST)
+    @ResponseBody
+    public CommonResult updateFactoryStatus(@RequestParam("ids")Long ids, @RequestParam("factoryStatus") Integer factoryStatus) {
+        int count = pmsBrandService.updateFactoryStatus(ids, factoryStatus);
+        if (count > 0) {
+            return CommonResult.success(count);
+        } else {
+            return CommonResult.failed();
+        }
     }
 
-    /**
-     * 新增数据
-     *
-     * @param pmsBrand 实体对象
-     * @return 新增结果
-     */
-    @PostMapping
-    public R insert(@RequestBody PmsBrand pmsBrand) {
-        return success(this.pmsBrandService.save(pmsBrand));
+    @ApiOperation("修改显示状态")
+    @RequestMapping(value = "/update/showStatus", method = RequestMethod.POST)
+    @ResponseBody
+    public CommonResult updateShowStatus(@RequestParam("ids") Long ids, @RequestParam("showStatus") Integer showStatus) {
+        int count = pmsBrandService.updateShowStatus(ids, showStatus);
+        if (count > 0) {
+            return CommonResult.success(count);
+        } else {
+            return CommonResult.failed();
+        }
     }
 
-    /**
-     * 修改数据
-     *
-     * @param pmsBrand 实体对象
-     * @return 修改结果
-     */
-    @PutMapping
-    public R update(@RequestBody PmsBrand pmsBrand) {
-        return success(this.pmsBrandService.updateById(pmsBrand));
+
+    @ApiOperation("根据id获取品牌信息")
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    @ResponseBody
+    public CommonResult<PmsBrand> getItem(@PathVariable Long id) {
+        PmsBrand pmsBrand = pmsBrandService.getById(id);
+        return CommonResult.success(pmsBrand);
     }
 
-    /**
-     * 删除数据
-     *
-     * @param idList 主键结合
-     * @return 删除结果
-     */
-    @DeleteMapping
-    public R delete(@RequestParam("idList") List<Long> idList) {
-        return success(this.pmsBrandService.removeByIds(idList));
+    @ApiOperation("修改品牌信息")
+    @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
+    @ResponseBody
+    public CommonResult updateShowStatus(@PathVariable("id") Long id,
+                                        @Validated @RequestBody PmsBrandParam pmsBrandParam) {
+
+        int count  = pmsBrandService.updateBrand(id, pmsBrandParam);
+        if (count > 0) {
+            return CommonResult.success(count);
+        } else {
+            return CommonResult.failed();
+        }
     }
+
 }

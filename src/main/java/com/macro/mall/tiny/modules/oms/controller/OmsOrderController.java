@@ -8,10 +8,7 @@ import com.macro.mall.tiny.common.api.CommonResult;
 import com.macro.mall.tiny.modules.oms.entity.OmsOrder;
 import com.macro.mall.tiny.modules.oms.service.OmsOrderService;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
@@ -52,4 +49,12 @@ public class OmsOrderController extends ApiController {
         return CommonResult.success(CommonPage.restPage(list));
     }
 
+
+    @ApiOperation("订单详情")
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public CommonResult<OmsOrder> getProductList(
+            @PathVariable("id") Long id) {
+        OmsOrder omsOrder = omsOrderService.getById(id);
+        return CommonResult.success(omsOrder);
+    }
 }

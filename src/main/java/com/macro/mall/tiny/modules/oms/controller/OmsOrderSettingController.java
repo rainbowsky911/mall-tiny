@@ -1,17 +1,14 @@
 package com.macro.mall.tiny.modules.oms.controller;
 
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.api.ApiController;
-import com.baomidou.mybatisplus.extension.api.R;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.macro.mall.tiny.common.api.CommonResult;
 import com.macro.mall.tiny.modules.oms.entity.OmsOrderSetting;
 import com.macro.mall.tiny.modules.oms.service.OmsOrderSettingService;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import java.io.Serializable;
-import java.util.List;
 
 /**
  * 订单设置表(OmsOrderSetting)表控制层
@@ -20,7 +17,7 @@ import java.util.List;
  * @since 2020-12-11 13:31:55
  */
 @RestController
-@RequestMapping("omsOrderSetting")
+@RequestMapping("orderSetting")
 public class OmsOrderSettingController extends ApiController {
     /**
      * 服务对象
@@ -28,59 +25,26 @@ public class OmsOrderSettingController extends ApiController {
     @Resource
     private OmsOrderSettingService omsOrderSettingService;
 
-    /**
-     * 分页查询所有数据
-     *
-     * @param page            分页对象
-     * @param omsOrderSetting 查询实体
-     * @return 所有数据
-     */
-    @GetMapping
-    public R selectAll(Page<OmsOrderSetting> page, OmsOrderSetting omsOrderSetting) {
-        return success(this.omsOrderSettingService.page(page, new QueryWrapper<>(omsOrderSetting)));
+
+    @ApiOperation("查看订单设置详情")
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public CommonResult<OmsOrderSetting> getOmsOrderSetting(
+            @PathVariable("id") Long id) {
+        OmsOrderSetting orderSetting = omsOrderSettingService.getById(id);
+        return CommonResult.success(orderSetting);
     }
 
-    /**
-     * 通过主键查询单条数据
-     *
-     * @param id 主键
-     * @return 单条数据
-     */
-    @GetMapping("{id}")
-    public R selectOne(@PathVariable Serializable id) {
-        return success(this.omsOrderSettingService.getById(id));
+
+    @ApiOperation("修改订单设置")
+    @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
+    public CommonResult updateOrderSetting(
+            @PathVariable("id") Long id, @RequestBody OmsOrderSetting orderSetting) {
+        orderSetting.setId(id);
+        boolean updateStatus = omsOrderSettingService.updateById(orderSetting);
+        if (updateStatus) {
+            return CommonResult.success(updateStatus);
+        }
+        return CommonResult.failed();
     }
 
-    /**
-     * 新增数据
-     *
-     * @param omsOrderSetting 实体对象
-     * @return 新增结果
-     */
-    @PostMapping
-    public R insert(@RequestBody OmsOrderSetting omsOrderSetting) {
-        return success(this.omsOrderSettingService.save(omsOrderSetting));
-    }
-
-    /**
-     * 修改数据
-     *
-     * @param omsOrderSetting 实体对象
-     * @return 修改结果
-     */
-    @PutMapping
-    public R update(@RequestBody OmsOrderSetting omsOrderSetting) {
-        return success(this.omsOrderSettingService.updateById(omsOrderSetting));
-    }
-
-    /**
-     * 删除数据
-     *
-     * @param idList 主键结合
-     * @return 删除结果
-     */
-    @DeleteMapping
-    public R delete(@RequestParam("idList") List<Long> idList) {
-        return success(this.omsOrderSettingService.removeByIds(idList));
-    }
 }

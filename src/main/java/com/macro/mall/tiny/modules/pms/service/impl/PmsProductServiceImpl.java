@@ -22,6 +22,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.stream.Collectors;
 
 /**
@@ -148,9 +149,9 @@ public class PmsProductServiceImpl extends ServiceImpl<PmsProductDao, PmsProduct
     }
 
     @Override
-    public int updateNewStatus(Long ids, Integer newStatus) {
+    public int updateNewStatus(List<Long> ids, Integer newStatus) {
         boolean updateStaus = update(new LambdaUpdateWrapper<PmsProduct>().set(ObjectUtil.isNotNull(newStatus), PmsProduct::getNewStatus, newStatus)
-                .eq(ObjectUtil.isNotNull(ids), PmsProduct::getId, ids));
+                .in(ObjectUtils.isNotEmpty(ids),PmsProduct::getId,ids));
         if (updateStaus) {
             return 1;
         } else {

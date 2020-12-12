@@ -9,6 +9,8 @@ import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 /**
  * 商品信息(PmsProduct)表服务接口
  *
@@ -44,12 +46,12 @@ public interface PmsProductService extends IService<PmsProduct> {
      */
     int updatePublishStatus(Long ids, Integer publishStatus);
 
-    /**修改修改状态
+    /**修改新品状态
      * @param ids
      * @param newStatus
      * @return
      */
-    int updateNewStatus(Long ids, Integer newStatus);
+    int updateNewStatus(List<Long> ids, Integer newStatus);
 
     /**
      * 修改推荐状态

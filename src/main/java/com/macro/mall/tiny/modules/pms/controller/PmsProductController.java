@@ -13,6 +13,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * 商品信息(PmsProduct)表控制层
@@ -100,7 +101,7 @@ public class PmsProductController extends ApiController {
 
     @ApiOperation("修改新品状态")
     @RequestMapping(value = "/update/newStatus", method = RequestMethod.POST)
-    public CommonResult updateNewStatus(@RequestParam("ids") Long ids, @RequestParam("newStatus") Integer newStatus) {
+    public CommonResult updateNewStatus(@RequestParam("ids") List<Long> ids, @RequestParam("newStatus") Integer newStatus) {
 
         int count = pmsProductService.updateNewStatus(ids, newStatus);
         if (count > 0) {

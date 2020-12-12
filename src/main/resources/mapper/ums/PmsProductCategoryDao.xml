@@ -18,6 +18,41 @@
     </resultMap>
 
 
+    <resultMap type="com.macro.mall.tiny.modules.pms.dto.PmsProductCategoryWithChildrenItem"
+               id="getCategoryListWithChild">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
 
+
+        <collection property="children"
+                    ofType="com.macro.mall.tiny.modules.pms.entity.PmsProductCategory"
+                    columnPrefix="child_">
+            <result property="id" column="id" jdbcType="INTEGER"/>
+            <result property="parentId" column="parent_id" jdbcType="INTEGER"/>
+            <result property="name" column="name" jdbcType="VARCHAR"/>
+            <result property="level" column="level" jdbcType="INTEGER"/>
+            <result property="productCount" column="product_count" jdbcType="INTEGER"/>
+            <result property="productUnit" column="product_unit" jdbcType="VARCHAR"/>
+            <result property="navStatus" column="nav_status" jdbcType="INTEGER"/>
+            <result property="showStatus" column="show_status" jdbcType="INTEGER"/>
+            <result property="sort" column="sort" jdbcType="INTEGER"/>
+            <result property="icon" column="icon" jdbcType="VARCHAR"/>
+            <result property="keywords" column="keywords" jdbcType="VARCHAR"/>
+            <result property="description" column="description" jdbcType="VARCHAR"/>
+        </collection>
+    </resultMap>
+
+    <select id="getCategoryListWithChild" resultMap="getCategoryListWithChild">
+                   SELECT
+            c1.id,
+            c1.name ,
+            c2.id child_id,
+            c2.name child_name
+        FROM
+            pms_product_category c1
+            LEFT JOIN pms_product_category c2 ON c1.id = c2.parent_id
+        WHERE
+            c1.parent_id = 0
+    </select>
 
 </mapper>

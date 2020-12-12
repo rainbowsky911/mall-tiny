@@ -6,6 +6,8 @@ import com.macro.mall.tiny.modules.cms.entity.CmsSubject;
 import com.macro.mall.tiny.modules.cms.service.CmsSubjectService;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * 专题表(CmsSubject)表服务实现类
  *
@@ -15,4 +17,8 @@ import org.springframework.stereotype.Service;
 @Service("cmsSubjectService")
 public class CmsSubjectServiceImpl extends ServiceImpl<CmsSubjectDao, CmsSubject> implements CmsSubjectService {
 
+    @Override
+    public List<CmsSubject> getCmsSubjectList() {
+        return list();
+    }
 }

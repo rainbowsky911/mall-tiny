@@ -1,6 +1,8 @@
 package com.macro.mall.tiny.modules.pms.entity;
 
 import com.baomidou.mybatisplus.extension.activerecord.Model;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
 import java.io.Serializable;
 
@@ -11,6 +13,8 @@ import java.io.Serializable;
  * @since 2020-12-11 13:40:36
  */
 @SuppressWarnings("serial")
+@Data
+@Accessors(chain = true)
 public class PmsSkuStock extends Model<PmsSkuStock> {
 
     private Long id;
@@ -34,95 +38,6 @@ public class PmsSkuStock extends Model<PmsSkuStock> {
     private Integer lockStock;
     //商品销售属性，json格式
     private String spData;
-
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getProductId() {
-        return productId;
-    }
-
-    public void setProductId(Long productId) {
-        this.productId = productId;
-    }
-
-    public String getSkuCode() {
-        return skuCode;
-    }
-
-    public void setSkuCode(String skuCode) {
-        this.skuCode = skuCode;
-    }
-
-    public Double getPrice() {
-        return price;
-    }
-
-    public void setPrice(Double price) {
-        this.price = price;
-    }
-
-    public Integer getStock() {
-        return stock;
-    }
-
-    public void setStock(Integer stock) {
-        this.stock = stock;
-    }
-
-    public Integer getLowStock() {
-        return lowStock;
-    }
-
-    public void setLowStock(Integer lowStock) {
-        this.lowStock = lowStock;
-    }
-
-    public String getPic() {
-        return pic;
-    }
-
-    public void setPic(String pic) {
-        this.pic = pic;
-    }
-
-    public Integer getSale() {
-        return sale;
-    }
-
-    public void setSale(Integer sale) {
-        this.sale = sale;
-    }
-
-    public Double getPromotionPrice() {
-        return promotionPrice;
-    }
-
-    public void setPromotionPrice(Double promotionPrice) {
-        this.promotionPrice = promotionPrice;
-    }
-
-    public Integer getLockStock() {
-        return lockStock;
-    }
-
-    public void setLockStock(Integer lockStock) {
-        this.lockStock = lockStock;
-    }
-
-    public String getSpData() {
-        return spData;
-    }
-
-    public void setSpData(String spData) {
-        this.spData = spData;
-    }
 
     /**
      * 获取主键值

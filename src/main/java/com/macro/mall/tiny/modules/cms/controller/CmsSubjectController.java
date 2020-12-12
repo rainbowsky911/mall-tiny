@@ -5,8 +5,10 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.api.ApiController;
 import com.baomidou.mybatisplus.extension.api.R;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.macro.mall.tiny.common.api.CommonResult;
 import com.macro.mall.tiny.modules.cms.entity.CmsSubject;
 import com.macro.mall.tiny.modules.cms.service.CmsSubjectService;
+import com.macro.mall.tiny.modules.ums.entity.UmsMemberLevel;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -20,7 +22,7 @@ import java.util.List;
  * @since 2020-12-11 13:20:15
  */
 @RestController
-@RequestMapping("cmsSubject")
+@RequestMapping("subject")
 public class CmsSubjectController extends ApiController {
     /**
      * 服务对象
@@ -28,59 +30,14 @@ public class CmsSubjectController extends ApiController {
     @Resource
     private CmsSubjectService cmsSubjectService;
 
-    /**
-     * 分页查询所有数据
-     *
-     * @param page       分页对象
-     * @param cmsSubject 查询实体
-     * @return 所有数据
-     */
-    @GetMapping
-    public R selectAll(Page<CmsSubject> page, CmsSubject cmsSubject) {
-        return success(this.cmsSubjectService.page(page, new QueryWrapper<>(cmsSubject)));
-    }
 
     /**
-     * 通过主键查询单条数据
-     *
-     * @param id 主键
-     * @return 单条数据
+     * 查询所有专题
+     * @return
      */
-    @GetMapping("{id}")
-    public R selectOne(@PathVariable Serializable id) {
-        return success(this.cmsSubjectService.getById(id));
+    @GetMapping("/listAll")
+    public CommonResult<List<CmsSubject>> getCmsSubjectList() {
+        return CommonResult.success(cmsSubjectService.getCmsSubjectList());
     }
 
-    /**
-     * 新增数据
-     *
-     * @param cmsSubject 实体对象
-     * @return 新增结果
-     */
-    @PostMapping
-    public R insert(@RequestBody CmsSubject cmsSubject) {
-        return success(this.cmsSubjectService.save(cmsSubject));
-    }
-
-    /**
-     * 修改数据
-     *
-     * @param cmsSubject 实体对象
-     * @return 修改结果
-     */
-    @PutMapping
-    public R update(@RequestBody CmsSubject cmsSubject) {
-        return success(this.cmsSubjectService.updateById(cmsSubject));
-    }
-
-    /**
-     * 删除数据
-     *
-     * @param idList 主键结合
-     * @return 删除结果
-     */
-    @DeleteMapping
-    public R delete(@RequestParam("idList") List<Long> idList) {
-        return success(this.cmsSubjectService.removeByIds(idList));
-    }
 }

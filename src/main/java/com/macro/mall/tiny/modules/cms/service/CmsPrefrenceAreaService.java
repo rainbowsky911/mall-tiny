@@ -3,6 +3,8 @@ package com.macro.mall.tiny.modules.cms.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.macro.mall.tiny.modules.cms.entity.CmsPrefrenceArea;
 
+import java.util.List;
+
 /**
  * 优选专区(CmsPrefrenceArea)表服务接口
  *
@@ -11,4 +13,9 @@ import com.macro.mall.tiny.modules.cms.entity.CmsPrefrenceArea;
  */
 public interface CmsPrefrenceAreaService extends IService<CmsPrefrenceArea> {
 
+    /**
+     * 查询所有优选
+     * @return
+     */
+    List<CmsPrefrenceArea> getCmsPrefrenceAreaList();
 }

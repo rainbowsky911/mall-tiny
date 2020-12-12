@@ -18,57 +18,7 @@
     </resultMap>
 
 
-    <!--新增所有列-->
-    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
-        insert into mall.pms_product_attribute(product_attribute_category_id, name, select_type, input_type, input_list, sort, filter_type, search_type, related_status, hand_add_status, type)
-        values (#{productAttributeCategoryId}, #{name}, #{selectType}, #{inputType}, #{inputList}, #{sort}, #{filterType}, #{searchType}, #{relatedStatus}, #{handAddStatus}, #{type})
-    </insert>
 
-    <!--通过主键修改数据-->
-    <update id="update">
-        update mall.pms_product_attribute
-        <set>
-            <if test="productAttributeCategoryId != null">
-                product_attribute_category_id = #{productAttributeCategoryId},
-            </if>
-            <if test="name != null and name != ''">
-                name = #{name},
-            </if>
-            <if test="selectType != null">
-                select_type = #{selectType},
-            </if>
-            <if test="inputType != null">
-                input_type = #{inputType},
-            </if>
-            <if test="inputList != null and inputList != ''">
-                input_list = #{inputList},
-            </if>
-            <if test="sort != null">
-                sort = #{sort},
-            </if>
-            <if test="filterType != null">
-                filter_type = #{filterType},
-            </if>
-            <if test="searchType != null">
-                search_type = #{searchType},
-            </if>
-            <if test="relatedStatus != null">
-                related_status = #{relatedStatus},
-            </if>
-            <if test="handAddStatus != null">
-                hand_add_status = #{handAddStatus},
-            </if>
-            <if test="type != null">
-                type = #{type},
-            </if>
-        </set>
-        where id = #{id}
-    </update>
-
-    <!--通过主键删除-->
-    <delete id="deleteById">
-        delete from mall.pms_product_attribute where id = #{id}
-    </delete>
 
 
     <select id="getProductAttrInfo" resultType="com.macro.mall.tiny.modules.pms.dto.ProductAttrInfo">

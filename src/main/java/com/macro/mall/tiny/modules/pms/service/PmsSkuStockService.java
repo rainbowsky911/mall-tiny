@@ -3,6 +3,8 @@ package com.macro.mall.tiny.modules.pms.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.macro.mall.tiny.modules.pms.entity.PmsSkuStock;
 
+import java.util.List;
+
 /**
  * sku的库存(PmsSkuStock)表服务接口
  *
@@ -11,4 +13,11 @@ import com.macro.mall.tiny.modules.pms.entity.PmsSkuStock;
  */
 public interface PmsSkuStockService extends IService<PmsSkuStock> {
 
+
+    /**
+     * 根据商品ID查询SKU信息
+     * @param id
+     * @return
+     */
+    List<PmsSkuStock> getProductId(Long id);
 }

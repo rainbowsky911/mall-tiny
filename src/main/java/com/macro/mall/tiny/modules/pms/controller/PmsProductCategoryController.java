@@ -8,15 +8,13 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.macro.mall.tiny.common.api.CommonPage;
 import com.macro.mall.tiny.common.api.CommonResult;
 import com.macro.mall.tiny.modules.pms.dao.PmsProductCategoryDao;
-import com.macro.mall.tiny.modules.pms.entity.PmsProduct;
+import com.macro.mall.tiny.modules.pms.dto.PmsProductCategoryWithChildrenItem;
 import com.macro.mall.tiny.modules.pms.entity.PmsProductCategory;
 import com.macro.mall.tiny.modules.pms.service.PmsProductCategoryService;
-import com.macro.mall.tiny.modules.ums.model.UmsAdmin;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -84,4 +82,12 @@ public class PmsProductCategoryController extends ApiController {
         return CommonResult.success(productCategory);
     }
 
+
+    @ApiOperation("获取分类及其子分类")
+    @RequestMapping(value = "list/withChildren", method = RequestMethod.GET)
+    @ResponseBody
+    public CommonResult<List<PmsProductCategoryWithChildrenItem>> getCategoryListWithChild() {
+        List<PmsProductCategoryWithChildrenItem> list = pmsProductCategoryService.getCategoryListWithChild();
+        return CommonResult.success(list);
+    }
 }

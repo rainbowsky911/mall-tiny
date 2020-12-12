@@ -48,7 +48,10 @@
     </resultMap>
 
 
-
-
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into mall.pms_product(brand_id, product_category_id, feight_template_id, product_attribute_category_id, name, pic, product_sn, delete_status, publish_status, new_status, recommand_status, verify_status, sort, sale, price, promotion_price, gift_growth, gift_point, use_point_limit, sub_title, description, original_price, stock, low_stock, unit, weight, preview_status, service_ids, keywords, note, album_pics, detail_title, detail_desc, detail_html, detail_mobile_html, promotion_start_time, promotion_end_time, promotion_per_limit, promotion_type, brand_name, product_category_name)
+        values (#{brandId}, #{productCategoryId}, #{feightTemplateId}, #{productAttributeCategoryId}, #{name}, #{pic}, #{productSn}, #{deleteStatus}, #{publishStatus}, #{newStatus}, #{recommandStatus}, #{verifyStatus}, #{sort}, #{sale}, #{price}, #{promotionPrice}, #{giftGrowth}, #{giftPoint}, #{usePointLimit}, #{subTitle}, #{description}, #{originalPrice}, #{stock}, #{lowStock}, #{unit}, #{weight}, #{previewStatus}, #{serviceIds}, #{keywords}, #{note}, #{albumPics}, #{detailTitle}, #{detailDesc}, #{detailHtml}, #{detailMobileHtml}, #{promotionStartTime}, #{promotionEndTime}, #{promotionPerLimit}, #{promotionType}, #{brandName}, #{productCategoryName})
+    </insert>
 
 </mapper>

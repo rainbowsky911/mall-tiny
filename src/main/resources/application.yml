@@ -49,6 +49,3 @@ secure:
       - /admin/register
       - /admin/info
       - /admin/logout
-mybatis:
-  configuration:
-    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

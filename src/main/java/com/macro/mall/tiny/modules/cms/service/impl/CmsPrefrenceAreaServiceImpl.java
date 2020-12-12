@@ -6,6 +6,8 @@ import com.macro.mall.tiny.modules.cms.entity.CmsPrefrenceArea;
 import com.macro.mall.tiny.modules.cms.service.CmsPrefrenceAreaService;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * 优选专区(CmsPrefrenceArea)表服务实现类
  *
@@ -15,4 +17,8 @@ import org.springframework.stereotype.Service;
 @Service("cmsPrefrenceAreaService")
 public class CmsPrefrenceAreaServiceImpl extends ServiceImpl<CmsPrefrenceAreaDao, CmsPrefrenceArea> implements CmsPrefrenceAreaService {
 
+    @Override
+    public List<CmsPrefrenceArea> getCmsPrefrenceAreaList() {
+        return list();
+    }
 }

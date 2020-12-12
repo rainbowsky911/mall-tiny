@@ -9,10 +9,15 @@ import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.macro.mall.tiny.modules.pms.dao.PmsProductCategoryDao;
+import com.macro.mall.tiny.modules.pms.dto.PmsProductCategoryWithChildrenItem;
 import com.macro.mall.tiny.modules.pms.entity.PmsProductCategory;
 import com.macro.mall.tiny.modules.pms.service.PmsProductCategoryService;
 import com.macro.mall.tiny.modules.ums.model.UmsAdmin;
+import io.swagger.annotations.ApiModelProperty;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * 产品分类(PmsProductCategory)表服务实现类
@@ -22,6 +27,9 @@ import org.springframework.stereotype.Service;
  */
 @Service("pmsProductCategoryService")
 public class PmsProductCategoryServiceImpl extends ServiceImpl<PmsProductCategoryDao, PmsProductCategory> implements PmsProductCategoryService {
+
+    @Autowired
+    private  PmsProductCategoryDao productCategoryDao;
 
     @Override
     public Page<PmsProductCategory> getList(Long  parentId, Integer pageSize, Integer pageNum) {
@@ -58,5 +66,10 @@ public class PmsProductCategoryServiceImpl extends ServiceImpl<PmsProductCategor
         }else {
             return 0;
         }
+    }
+
+    @Override
+    public List<PmsProductCategoryWithChildrenItem> getCategoryListWithChild() {
+        return   productCategoryDao.getCategoryListWithChild();
     }
 }

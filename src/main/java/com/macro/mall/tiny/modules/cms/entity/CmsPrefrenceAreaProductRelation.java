@@ -1,6 +1,8 @@
 package com.macro.mall.tiny.modules.cms.entity;
 
 import com.baomidou.mybatisplus.extension.activerecord.Model;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
 import java.io.Serializable;
 
@@ -11,6 +13,8 @@ import java.io.Serializable;
  * @since 2020-12-11 13:20:14
  */
 @SuppressWarnings("serial")
+@Data
+@Accessors(chain = true)
 public class CmsPrefrenceAreaProductRelation extends Model<CmsPrefrenceAreaProductRelation> {
 
     private Long id;
@@ -18,32 +22,6 @@ public class CmsPrefrenceAreaProductRelation extends Model<CmsPrefrenceAreaProdu
     private Long prefrenceAreaId;
 
     private Long productId;
-
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getPrefrenceAreaId() {
-        return prefrenceAreaId;
-    }
-
-    public void setPrefrenceAreaId(Long prefrenceAreaId) {
-        this.prefrenceAreaId = prefrenceAreaId;
-    }
-
-    public Long getProductId() {
-        return productId;
-    }
-
-    public void setProductId(Long productId) {
-        this.productId = productId;
-    }
-
     /**
      * 获取主键值
      *

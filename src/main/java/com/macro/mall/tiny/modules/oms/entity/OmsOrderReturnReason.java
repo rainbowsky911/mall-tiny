@@ -1,6 +1,8 @@
 package com.macro.mall.tiny.modules.oms.entity;
 
 import com.baomidou.mybatisplus.extension.activerecord.Model;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -12,6 +14,8 @@ import java.time.LocalDateTime;
  * @since 2020-12-11 13:31:54
  */
 @SuppressWarnings("serial")
+@Data
+@Accessors(chain = true)
 public class OmsOrderReturnReason extends Model<OmsOrderReturnReason> {
 
     private Long id;
@@ -25,45 +29,6 @@ public class OmsOrderReturnReason extends Model<OmsOrderReturnReason> {
     private LocalDateTime createTime;
 
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Integer getSort() {
-        return sort;
-    }
-
-    public void setSort(Integer sort) {
-        this.sort = sort;
-    }
-
-    public Integer getStatus() {
-        return status;
-    }
-
-    public void setStatus(Integer status) {
-        this.status = status;
-    }
-
-    public LocalDateTime getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(LocalDateTime createTime) {
-        this.createTime = createTime;
-    }
 
     /**
      * 获取主键值

@@ -42,7 +42,7 @@ public class PmsProductController extends ApiController {
         }
     }
 
-
+    //TODO 商品信息的模糊查询
     @ApiOperation("商品列表")
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public CommonResult<CommonPage<PmsProduct>> getProductList(
@@ -110,6 +110,17 @@ public class PmsProductController extends ApiController {
             return CommonResult.failed();
         }
     }
+
+
+   /* @ApiOperation("查询商品")
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
+    @ResponseBody
+    public CommonResult< IPage<List<PmsProduct>>> getList(@RequestParam PmsProductQueryParam productQueryParam,
+                                                        @RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize,
+                                                        @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum) {
+        IPage<List<PmsProduct>> list = pmsProductService.getDynamic(new Page(pageNum, pageSize),productQueryParam);
+        return CommonResult.success(list);
+    }*/
 
 
 }

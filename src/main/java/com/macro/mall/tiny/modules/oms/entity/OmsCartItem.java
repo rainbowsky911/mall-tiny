@@ -1,6 +1,8 @@
 package com.macro.mall.tiny.modules.oms.entity;
 
 import com.baomidou.mybatisplus.extension.activerecord.Model;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -12,6 +14,8 @@ import java.time.LocalDateTime;
  * @since 2020-12-11 13:31:47
  */
 @SuppressWarnings("serial")
+@Data
+@Accessors(chain = true)
 public class OmsCartItem extends Model<OmsCartItem> {
 
     private Long id;
@@ -51,149 +55,7 @@ public class OmsCartItem extends Model<OmsCartItem> {
     private String productAttr;
 
 
-    public Long getId() {
-        return id;
-    }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getProductId() {
-        return productId;
-    }
-
-    public void setProductId(Long productId) {
-        this.productId = productId;
-    }
-
-    public Long getProductSkuId() {
-        return productSkuId;
-    }
-
-    public void setProductSkuId(Long productSkuId) {
-        this.productSkuId = productSkuId;
-    }
-
-    public Long getMemberId() {
-        return memberId;
-    }
-
-    public void setMemberId(Long memberId) {
-        this.memberId = memberId;
-    }
-
-    public Integer getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
-    }
-
-    public Double getPrice() {
-        return price;
-    }
-
-    public void setPrice(Double price) {
-        this.price = price;
-    }
-
-    public String getProductPic() {
-        return productPic;
-    }
-
-    public void setProductPic(String productPic) {
-        this.productPic = productPic;
-    }
-
-    public String getProductName() {
-        return productName;
-    }
-
-    public void setProductName(String productName) {
-        this.productName = productName;
-    }
-
-    public String getProductSubTitle() {
-        return productSubTitle;
-    }
-
-    public void setProductSubTitle(String productSubTitle) {
-        this.productSubTitle = productSubTitle;
-    }
-
-    public String getProductSkuCode() {
-        return productSkuCode;
-    }
-
-    public void setProductSkuCode(String productSkuCode) {
-        this.productSkuCode = productSkuCode;
-    }
-
-    public String getMemberNickname() {
-        return memberNickname;
-    }
-
-    public void setMemberNickname(String memberNickname) {
-        this.memberNickname = memberNickname;
-    }
-
-    public LocalDateTime getCreateDate() {
-        return createDate;
-    }
-
-    public void setCreateDate(LocalDateTime createDate) {
-        this.createDate = createDate;
-    }
-
-    public LocalDateTime getModifyDate() {
-        return modifyDate;
-    }
-
-    public void setModifyDate(LocalDateTime modifyDate) {
-        this.modifyDate = modifyDate;
-    }
-
-    public Integer getDeleteStatus() {
-        return deleteStatus;
-    }
-
-    public void setDeleteStatus(Integer deleteStatus) {
-        this.deleteStatus = deleteStatus;
-    }
-
-    public Long getProductCategoryId() {
-        return productCategoryId;
-    }
-
-    public void setProductCategoryId(Long productCategoryId) {
-        this.productCategoryId = productCategoryId;
-    }
-
-    public String getProductBrand() {
-        return productBrand;
-    }
-
-    public void setProductBrand(String productBrand) {
-        this.productBrand = productBrand;
-    }
-
-    public String getProductSn() {
-        return productSn;
-    }
-
-    public void setProductSn(String productSn) {
-        this.productSn = productSn;
-    }
-
-    public String getProductAttr() {
-        return productAttr;
-    }
-
-    public void setProductAttr(String productAttr) {
-        this.productAttr = productAttr;
-    }
 
     /**
      * 获取主键值

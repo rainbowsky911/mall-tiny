@@ -1,6 +1,9 @@
 package com.macro.mall.tiny.modules.oms.service;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.macro.mall.tiny.modules.oms.dto.OmsOrderQueryParam;
 import com.macro.mall.tiny.modules.oms.entity.OmsOrder;
 
 /**
@@ -11,4 +14,22 @@ import com.macro.mall.tiny.modules.oms.entity.OmsOrder;
  */
 public interface OmsOrderService extends IService<OmsOrder> {
 
+
+    /**
+     *
+     * 动态查询订单
+     * @param orderQueryParam
+
+     * @return
+     */
+    IPage<OmsOrder> getList(Page page, OmsOrderQueryParam orderQueryParam);
+
+
+    /**
+     * 分页查询订单
+     * @param pageNum
+     * @param pageSize
+     * @return
+     */
+    Page<OmsOrder> getListNormal(Integer pageNum, Integer pageSize);
 }

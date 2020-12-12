@@ -1,6 +1,8 @@
 package com.macro.mall.tiny.modules.oms.entity;
 
 import com.baomidou.mybatisplus.extension.activerecord.Model;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -12,6 +14,8 @@ import java.time.LocalDateTime;
  * @since 2020-12-11 13:31:53
  */
 @SuppressWarnings("serial")
+@Data
+@Accessors(chain = true)
 public class OmsOrderReturnApply extends Model<OmsOrderReturnApply> {
 
     private Long id;
@@ -69,221 +73,7 @@ public class OmsOrderReturnApply extends Model<OmsOrderReturnApply> {
     private String receiveNote;
 
 
-    public Long getId() {
-        return id;
-    }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getOrderId() {
-        return orderId;
-    }
-
-    public void setOrderId(Long orderId) {
-        this.orderId = orderId;
-    }
-
-    public Long getCompanyAddressId() {
-        return companyAddressId;
-    }
-
-    public void setCompanyAddressId(Long companyAddressId) {
-        this.companyAddressId = companyAddressId;
-    }
-
-    public Long getProductId() {
-        return productId;
-    }
-
-    public void setProductId(Long productId) {
-        this.productId = productId;
-    }
-
-    public String getOrderSn() {
-        return orderSn;
-    }
-
-    public void setOrderSn(String orderSn) {
-        this.orderSn = orderSn;
-    }
-
-    public LocalDateTime getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(LocalDateTime createTime) {
-        this.createTime = createTime;
-    }
-
-    public String getMemberUsername() {
-        return memberUsername;
-    }
-
-    public void setMemberUsername(String memberUsername) {
-        this.memberUsername = memberUsername;
-    }
-
-    public Double getReturnAmount() {
-        return returnAmount;
-    }
-
-    public void setReturnAmount(Double returnAmount) {
-        this.returnAmount = returnAmount;
-    }
-
-    public String getReturnName() {
-        return returnName;
-    }
-
-    public void setReturnName(String returnName) {
-        this.returnName = returnName;
-    }
-
-    public String getReturnPhone() {
-        return returnPhone;
-    }
-
-    public void setReturnPhone(String returnPhone) {
-        this.returnPhone = returnPhone;
-    }
-
-    public Integer getStatus() {
-        return status;
-    }
-
-    public void setStatus(Integer status) {
-        this.status = status;
-    }
-
-    public LocalDateTime getHandleTime() {
-        return handleTime;
-    }
-
-    public void setHandleTime(LocalDateTime handleTime) {
-        this.handleTime = handleTime;
-    }
-
-    public String getProductPic() {
-        return productPic;
-    }
-
-    public void setProductPic(String productPic) {
-        this.productPic = productPic;
-    }
-
-    public String getProductName() {
-        return productName;
-    }
-
-    public void setProductName(String productName) {
-        this.productName = productName;
-    }
-
-    public String getProductBrand() {
-        return productBrand;
-    }
-
-    public void setProductBrand(String productBrand) {
-        this.productBrand = productBrand;
-    }
-
-    public String getProductAttr() {
-        return productAttr;
-    }
-
-    public void setProductAttr(String productAttr) {
-        this.productAttr = productAttr;
-    }
-
-    public Integer getProductCount() {
-        return productCount;
-    }
-
-    public void setProductCount(Integer productCount) {
-        this.productCount = productCount;
-    }
-
-    public Double getProductPrice() {
-        return productPrice;
-    }
-
-    public void setProductPrice(Double productPrice) {
-        this.productPrice = productPrice;
-    }
-
-    public Double getProductRealPrice() {
-        return productRealPrice;
-    }
-
-    public void setProductRealPrice(Double productRealPrice) {
-        this.productRealPrice = productRealPrice;
-    }
-
-    public String getReason() {
-        return reason;
-    }
-
-    public void setReason(String reason) {
-        this.reason = reason;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getProofPics() {
-        return proofPics;
-    }
-
-    public void setProofPics(String proofPics) {
-        this.proofPics = proofPics;
-    }
-
-    public String getHandleNote() {
-        return handleNote;
-    }
-
-    public void setHandleNote(String handleNote) {
-        this.handleNote = handleNote;
-    }
-
-    public String getHandleMan() {
-        return handleMan;
-    }
-
-    public void setHandleMan(String handleMan) {
-        this.handleMan = handleMan;
-    }
-
-    public String getReceiveMan() {
-        return receiveMan;
-    }
-
-    public void setReceiveMan(String receiveMan) {
-        this.receiveMan = receiveMan;
-    }
-
-    public LocalDateTime getReceiveTime() {
-        return receiveTime;
-    }
-
-    public void setReceiveTime(LocalDateTime receiveTime) {
-        this.receiveTime = receiveTime;
-    }
-
-    public String getReceiveNote() {
-        return receiveNote;
-    }
-
-    public void setReceiveNote(String receiveNote) {
-        this.receiveNote = receiveNote;
-    }
 
     /**
      * 获取主键值

@@ -4,6 +4,7 @@ import cn.hutool.core.util.ObjectUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.macro.mall.tiny.modules.cms.entity.CmsPrefrenceAreaProductRelation;
@@ -13,12 +14,14 @@ import com.macro.mall.tiny.modules.cms.service.CmsSubjectProductRelationService;
 import com.macro.mall.tiny.modules.pms.dao.PmsMemberPriceDao;
 import com.macro.mall.tiny.modules.pms.dao.PmsProductDao;
 import com.macro.mall.tiny.modules.pms.dto.PmsProductParam;
+import com.macro.mall.tiny.modules.pms.dto.PmsProductQueryParam;
 import com.macro.mall.tiny.modules.pms.dto.PmsProductResult;
 import com.macro.mall.tiny.modules.pms.entity.*;
 import com.macro.mall.tiny.modules.pms.service.*;
 import org.apache.commons.lang3.ObjectUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -151,7 +154,7 @@ public class PmsProductServiceImpl extends ServiceImpl<PmsProductDao, PmsProduct
     @Override
     public int updateNewStatus(List<Long> ids, Integer newStatus) {
         boolean updateStaus = update(new LambdaUpdateWrapper<PmsProduct>().set(ObjectUtil.isNotNull(newStatus), PmsProduct::getNewStatus, newStatus)
-                .in(ObjectUtils.isNotEmpty(ids),PmsProduct::getId,ids));
+                .in(ObjectUtils.isNotEmpty(ids), PmsProduct::getId, ids));
         if (updateStaus) {
             return 1;
         } else {
@@ -177,7 +180,7 @@ public class PmsProductServiceImpl extends ServiceImpl<PmsProductDao, PmsProduct
         this.pmsProductDao.updateById(product);
         Long productId = product.getId();
 
-        int count =0;
+        int count = 0;
 
         pmsMemberPriceService.remove(new LambdaQueryWrapper<PmsMemberPrice>()
                 .eq(ObjectUtils.isNotEmpty(id), PmsMemberPrice::getProductId, id));
@@ -245,13 +248,36 @@ public class PmsProductServiceImpl extends ServiceImpl<PmsProductDao, PmsProduct
         prefrenceAreaProductRelationService.saveBatch(pmsProductParam.getPrefrenceAreaProductRelationList()
                 .stream()
                 .map(p -> p.setProductId(productId)).collect(Collectors.toList()));
-        count =1;
+        count = 1;
         return 0;
     }
 
     @Override
     public PmsProductResult getUpdateInfo(Long id) {
 
-        return  pmsProductDao.getUpdateInfo(id);
+        return pmsProductDao.getUpdateInfo(id);
     }
+
+    @Override
+    public IPage<PmsProduct>  list(PmsProductQueryParam productQueryParam, Integer pageSize, Integer pageNum) {
+        Page<PmsProduct> page = new Page<>(pageNum, pageSize);
+        QueryWrapper<PmsProduct> wrapper = new QueryWrapper<>();
+        PmsProduct product =new PmsProduct();
+        BeanUtils.copyProperties(productQueryParam,product);
+        wrapper.like(ObjectUtils.isNotEmpty(productQueryParam.getKeyword()),"key_words" , productQueryParam.getKeyword());
+        wrapper.like(ObjectUtils.isNotEmpty(productQueryParam.getBrandId()), "brand_id", productQueryParam.getBrandId());
+        wrapper.like(ObjectUtils.isNotEmpty(productQueryParam.getProductSn()), "product_sn", productQueryParam.getProductSn());
+        wrapper.like(ObjectUtils.isNotEmpty(productQueryParam.getPublishStatus()), "publish_status", productQueryParam.getPublishStatus());
+        wrapper.like(ObjectUtils.isNotEmpty(productQueryParam.getVerifyStatus()), "verify_status", productQueryParam.getVerifyStatus());
+        wrapper.like(ObjectUtils.isNotEmpty(productQueryParam.getProductCategoryId()), "product_category_id", productQueryParam.getProductCategoryId());
+        IPage<PmsProduct> userPage = new Page<>(pageNum, pageSize);
+        IPage<PmsProduct> selectPage = pmsProductDao.selectPage(userPage, wrapper);
+        return selectPage;
+    }
+
+    @Override
+    public IPage<List<PmsProduct>> getDynamic(Page page, PmsProductQueryParam param) {
+        return pmsProductDao.getDynamic(page,param);
+    }
+
 }

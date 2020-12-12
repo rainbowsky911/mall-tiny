@@ -1,10 +1,13 @@
 package com.macro.mall.tiny.modules.pms.service;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.macro.mall.tiny.modules.pms.dto.PmsProductParam;
+import com.macro.mall.tiny.modules.pms.dto.PmsProductQueryParam;
 import com.macro.mall.tiny.modules.pms.dto.PmsProductResult;
 import com.macro.mall.tiny.modules.pms.entity.PmsProduct;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -76,4 +79,16 @@ public interface PmsProductService extends IService<PmsProduct> {
      * @return
      */
     PmsProductResult getUpdateInfo(Long id);
+
+    /**
+     * 分页查询
+     * @param productQueryParam
+     * @param pageSize
+     * @param pageNum
+     * @return
+     */
+    IPage<PmsProduct> list(PmsProductQueryParam productQueryParam, Integer pageSize, Integer pageNum);
+
+
+    IPage<List<PmsProduct>> getDynamic(Page page,@Param("item")PmsProductQueryParam param);
 }

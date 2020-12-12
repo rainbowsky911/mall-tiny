@@ -1,17 +1,19 @@
 package com.macro.mall.tiny.modules.oms.controller;
 
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.api.ApiController;
-import com.baomidou.mybatisplus.extension.api.R;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.macro.mall.tiny.common.api.CommonPage;
+import com.macro.mall.tiny.common.api.CommonResult;
 import com.macro.mall.tiny.modules.oms.entity.OmsOrder;
 import com.macro.mall.tiny.modules.oms.service.OmsOrderService;
-import org.springframework.web.bind.annotation.*;
+import io.swagger.annotations.ApiOperation;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
-import java.io.Serializable;
-import java.util.List;
 
 /**
  * 订单表(OmsOrder)表控制层
@@ -20,7 +22,7 @@ import java.util.List;
  * @since 2020-12-11 13:31:52
  */
 @RestController
-@RequestMapping("omsOrder")
+@RequestMapping("order")
 public class OmsOrderController extends ApiController {
     /**
      * 服务对象
@@ -28,59 +30,26 @@ public class OmsOrderController extends ApiController {
     @Resource
     private OmsOrderService omsOrderService;
 
-    /**
-     * 分页查询所有数据
-     *
-     * @param page     分页对象
-     * @param omsOrder 查询实体
-     * @return 所有数据
-     */
-    @GetMapping
-    public R selectAll(Page<OmsOrder> page, OmsOrder omsOrder) {
-        return success(this.omsOrderService.page(page, new QueryWrapper<>(omsOrder)));
+
+    //TODO 后端动态查询的返回格式和前端定义不一致，所以动态查询目前失效
+
+   /* @ApiOperation("订单列表")
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
+    public CommonResult<CommonPage<OmsOrder>> getProductList(
+             OmsOrderQueryParam orderQueryParam,
+            @RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize,
+            @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum) {
+        IPage<OmsOrder> list = omsOrderService.getList(new Page<>(pageNum, pageSize),orderQueryParam);
+        return CommonResult.success(CommonPage.restPage(list.getRecords()));
+    }*/
+
+    @ApiOperation("订单列表")
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
+    public CommonResult<CommonPage<OmsOrder>> getProductList(
+            @RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize,
+            @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum) {
+        Page<OmsOrder> list = omsOrderService.getListNormal(pageNum, pageSize);
+        return CommonResult.success(CommonPage.restPage(list));
     }
 
-    /**
-     * 通过主键查询单条数据
-     *
-     * @param id 主键
-     * @return 单条数据
-     */
-    @GetMapping("{id}")
-    public R selectOne(@PathVariable Serializable id) {
-        return success(this.omsOrderService.getById(id));
-    }
-
-    /**
-     * 新增数据
-     *
-     * @param omsOrder 实体对象
-     * @return 新增结果
-     */
-    @PostMapping
-    public R insert(@RequestBody OmsOrder omsOrder) {
-        return success(this.omsOrderService.save(omsOrder));
-    }
-
-    /**
-     * 修改数据
-     *
-     * @param omsOrder 实体对象
-     * @return 修改结果
-     */
-    @PutMapping
-    public R update(@RequestBody OmsOrder omsOrder) {
-        return success(this.omsOrderService.updateById(omsOrder));
-    }
-
-    /**
-     * 删除数据
-     *
-     * @param idList 主键结合
-     * @return 删除结果
-     */
-    @DeleteMapping
-    public R delete(@RequestParam("idList") List<Long> idList) {
-        return success(this.omsOrderService.removeByIds(idList));
-    }
 }

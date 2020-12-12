@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.macro.mall.tiny.modules.cms.dao.CmsHelpDao">
+
+    <resultMap type="com.macro.mall.tiny.modules.cms.entity.CmsHelp" id="CmsHelpMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="categoryId" column="category_id" jdbcType="INTEGER"/>
+        <result property="icon" column="icon" jdbcType="VARCHAR"/>
+        <result property="title" column="title" jdbcType="VARCHAR"/>
+        <result property="showStatus" column="show_status" jdbcType="INTEGER"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="readCount" column="read_count" jdbcType="INTEGER"/>
+        <result property="content" column="content" jdbcType="VARCHAR"/>
+    </resultMap>
+
+
+
+</mapper>

@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.macro.mall.tiny.common.api.CommonPage;
 import com.macro.mall.tiny.common.api.CommonResult;
 import com.macro.mall.tiny.modules.pms.dto.PmsProductParam;
+import com.macro.mall.tiny.modules.pms.dto.PmsProductResult;
 import com.macro.mall.tiny.modules.pms.entity.PmsProduct;
 import com.macro.mall.tiny.modules.pms.service.PmsProductService;
 import io.swagger.annotations.ApiOperation;
@@ -49,6 +50,28 @@ public class PmsProductController extends ApiController {
         Page<PmsProduct> list = pmsProductService.getList(pageSize, pageNum);
         return CommonResult.success(CommonPage.restPage(list));
     }
+
+
+    @ApiOperation("查看修改商品列表")
+    @RequestMapping(value = "/updateInfo/{id}", method = RequestMethod.GET)
+    public CommonResult<PmsProductResult> getUpdateInfo(@PathVariable Long id) {
+        PmsProductResult param = pmsProductService.getUpdateInfo(id);
+        return CommonResult.success(param);
+    }
+
+
+    @ApiOperation("修改商品信息")
+    @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
+    public CommonResult updateProductParam(@PathVariable("id") Long id, @RequestBody PmsProductParam pmsProductParam) {
+
+        int count = pmsProductService.updateProductParam(id, pmsProductParam);
+        if (count > 0) {
+            return CommonResult.success(count);
+        } else {
+            return CommonResult.failed();
+        }
+    }
+
 
     @ApiOperation("修改上架状态")
     @RequestMapping(value = "/update/publishStatus", method = RequestMethod.POST)

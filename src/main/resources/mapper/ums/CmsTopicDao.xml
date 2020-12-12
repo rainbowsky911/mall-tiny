@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.macro.mall.tiny.modules.cms.dao.CmsTopicDao">
+
+    <resultMap type="com.macro.mall.tiny.modules.cms.entity.CmsTopic" id="CmsTopicMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="categoryId" column="category_id" jdbcType="INTEGER"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="startTime" column="start_time" jdbcType="TIMESTAMP"/>
+        <result property="endTime" column="end_time" jdbcType="TIMESTAMP"/>
+        <result property="attendCount" column="attend_count" jdbcType="INTEGER"/>
+        <result property="attentionCount" column="attention_count" jdbcType="INTEGER"/>
+        <result property="readCount" column="read_count" jdbcType="INTEGER"/>
+        <result property="awardName" column="award_name" jdbcType="VARCHAR"/>
+        <result property="attendType" column="attend_type" jdbcType="VARCHAR"/>
+        <result property="content" column="content" jdbcType="VARCHAR"/>
+    </resultMap>
+
+
+
+</mapper>

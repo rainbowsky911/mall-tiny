@@ -1,8 +1,8 @@
 package com.macro.mall.tiny.modules.pms.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.macro.mall.tiny.modules.pms.dto.PmsProductResult;
 import com.macro.mall.tiny.modules.pms.entity.PmsProduct;
-import org.apache.ibatis.annotations.Param;
 
 /**
  * 商品信息(PmsProduct)表数据库访问层
@@ -13,4 +13,10 @@ import org.apache.ibatis.annotations.Param;
 public interface PmsProductDao extends BaseMapper<PmsProduct> {
 
 
+    /**
+     * 查看DTO商品信息类
+     * @param id
+     * @return
+     */
+    PmsProductResult getUpdateInfo(Long id);
 }

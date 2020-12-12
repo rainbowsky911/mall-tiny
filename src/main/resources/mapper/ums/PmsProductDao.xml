@@ -54,4 +54,85 @@
         values (#{brandId}, #{productCategoryId}, #{feightTemplateId}, #{productAttributeCategoryId}, #{name}, #{pic}, #{productSn}, #{deleteStatus}, #{publishStatus}, #{newStatus}, #{recommandStatus}, #{verifyStatus}, #{sort}, #{sale}, #{price}, #{promotionPrice}, #{giftGrowth}, #{giftPoint}, #{usePointLimit}, #{subTitle}, #{description}, #{originalPrice}, #{stock}, #{lowStock}, #{unit}, #{weight}, #{previewStatus}, #{serviceIds}, #{keywords}, #{note}, #{albumPics}, #{detailTitle}, #{detailDesc}, #{detailHtml}, #{detailMobileHtml}, #{promotionStartTime}, #{promotionEndTime}, #{promotionPerLimit}, #{promotionType}, #{brandName}, #{productCategoryName})
     </insert>
 
+
+    <resultMap type="com.macro.mall.tiny.modules.pms.dto.PmsProductResult" id="getUpdateInfo"
+               extends="com.macro.mall.tiny.modules.pms.dao.PmsProductDao.PmsProductMap">
+
+        <result column="cateParentId" jdbcType="BIGINT" property="cateParentId"/>
+        <collection property="productLadderList" columnPrefix="ladder_"
+                    resultMap="com.macro.mall.tiny.modules.pms.dao.PmsProductLadderDao.PmsProductLadderMap">
+        </collection>
+        <collection property="productFullReductionList" columnPrefix="full_"
+                    resultMap="com.macro.mall.tiny.modules.pms.dao.PmsProductFullReductionDao.PmsProductFullReductionMap">
+        </collection>
+        <collection property="memberPriceList" columnPrefix="member_"
+                    resultMap="com.macro.mall.tiny.modules.pms.dao.PmsMemberPriceDao.PmsMemberPriceMap">
+        </collection>
+        <collection property="skuStockList" columnPrefix="sku_"
+                    resultMap="com.macro.mall.tiny.modules.pms.dao.PmsSkuStockDao.PmsSkuStockMap">
+        </collection>
+        <collection property="productAttributeValueList" columnPrefix="attribute_"
+                    resultMap="com.macro.mall.tiny.modules.pms.dao.PmsProductAttributeValueDao.PmsProductAttributeValueMap">
+        </collection>
+
+        <collection property="subjectProductRelationList" columnPrefix="subject_"
+                    resultMap="com.macro.mall.tiny.modules.cms.dao.CmsSubjectProductRelationDao.CmsSubjectProductRelationMap"></collection>
+
+        <collection property="prefrenceAreaProductRelationList"
+                    columnPrefix="prefrence_"
+                    resultMap="com.macro.mall.tiny.modules.cms.dao.CmsPrefrenceAreaProductRelationDao.CmsPrefrenceAreaProductRelationMap"></collection>
+    </resultMap>
+    <select id="getUpdateInfo" resultMap="getUpdateInfo">
+                   SELECT
+            *,
+            ppc.id cateParentId,
+            pm.id member_id,
+            pm.product_id member_product_id,
+            pm.member_level_id member_member_level_id,
+            pm.member_price member_member_price,
+            pm.member_level_name member_member_level_name,
+            ppfr.id full_id,
+            ppfr.product_id full_product_id,
+            ppfr.full_price full_full_price,
+            ppfr.reduce_price full_reduce_price,
+            ppl.id ladder_id,
+            ppl.count ladder_count,
+            ppl.discount ladder_discount,
+            ppl.price ladder_price,
+            ppl.product_id ladder_product_id,
+            ppav.id attribute_id,
+            ppav.product_id attribute_product_id,
+            ppav.product_attribute_id attribute_product_attribute_id,
+            ppav.
+        VALUE
+            attribute_value,
+            pst.id sku_id,
+            pst.product_id sku_product_id,
+            pst.price sku_price,
+            pst.low_stock sku_low_stock,
+            pst.pic sku_pic,
+            pst.sale sku_sale,
+            pst.sku_code sku_sku_code,
+            pst.stock sku_stock,
+            pst.sp_data sku_sp_data,
+            cpar.id prefrence_id,
+            cpar.prefrence_area_id prefrence_prefrence_area_id,
+            cpar.product_id prefrence_product_id,
+            cspr.id subject_id,
+            cspr.product_id subject_product_id,
+            cspr.subject_id subject_subject_id
+        FROM
+            pms_product p
+            LEFT JOIN pms_member_price pm ON p.id = product_id
+            LEFT JOIN pms_product_full_reduction ppfr ON ppfr.product_id = p.id
+            LEFT JOIN pms_product_ladder ppl ON ppl.product_id = p.id
+            LEFT JOIN pms_product_attribute_value ppav ON ppav.product_id = p.id
+            LEFT JOIN pms_sku_stock pst ON pst.product_id = p.id
+            LEFT JOIN pms_product_category ppc ON ppc.id = p.product_category_id
+            LEFT JOIN cms_prefrence_area_product_relation cpar ON cpar.product_id = p.id
+            LEFT JOIN cms_subject_product_relation cspr ON cspr.product_id = p.id
+        WHERE
+            p.id =#{id}
+    </select>
+
 </mapper>

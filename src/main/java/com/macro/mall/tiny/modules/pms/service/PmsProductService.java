@@ -3,6 +3,7 @@ package com.macro.mall.tiny.modules.pms.service;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.macro.mall.tiny.modules.pms.dto.PmsProductParam;
+import com.macro.mall.tiny.modules.pms.dto.PmsProductResult;
 import com.macro.mall.tiny.modules.pms.entity.PmsProduct;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
@@ -57,4 +58,20 @@ public interface PmsProductService extends IService<PmsProduct> {
      * @return
      */
     int updateRecommendStatus(Long ids, Integer recommendStatus);
+
+
+    /**
+     * 更新商品
+     * @param id
+     * @param pmsProductParam
+     * @return
+     */
+    int updateProductParam(Long id, PmsProductParam pmsProductParam);
+
+    /**
+     * 查看DTO商品信息
+     * @param id
+     * @return
+     */
+    PmsProductResult getUpdateInfo(Long id);
 }

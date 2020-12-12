@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.macro.mall.tiny.modules.cms.dao.CmsSubjectCategoryDao">
+
+    <resultMap type="com.macro.mall.tiny.modules.cms.entity.CmsSubjectCategory" id="CmsSubjectCategoryMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="icon" column="icon" jdbcType="VARCHAR"/>
+        <result property="subjectCount" column="subject_count" jdbcType="INTEGER"/>
+        <result property="showStatus" column="show_status" jdbcType="INTEGER"/>
+        <result property="sort" column="sort" jdbcType="INTEGER"/>
+    </resultMap>
+
+
+
+</mapper>

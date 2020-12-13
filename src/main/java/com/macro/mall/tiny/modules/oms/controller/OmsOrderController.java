@@ -30,16 +30,6 @@ public class OmsOrderController extends ApiController {
 
     //TODO 后端动态查询的返回格式和前端定义不一致，所以动态查询目前失效
 
-   /* @ApiOperation("订单列表")
-    @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public CommonResult<CommonPage<OmsOrder>> getProductList(
-             OmsOrderQueryParam orderQueryParam,
-            @RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize,
-            @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum) {
-        IPage<OmsOrder> list = omsOrderService.getList(new Page<>(pageNum, pageSize),orderQueryParam);
-        return CommonResult.success(CommonPage.restPage(list.getRecords()));
-    }*/
-
     @ApiOperation("订单列表")
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public CommonResult<CommonPage<OmsOrder>> getProductList(

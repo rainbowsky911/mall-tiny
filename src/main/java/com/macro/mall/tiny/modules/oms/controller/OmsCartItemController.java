@@ -9,6 +9,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * 购物车表(OmsCartItem)表控制层
@@ -35,4 +36,15 @@ public class OmsCartItemController extends ApiController {
         }
         return CommonResult.failed();
     }
+
+    @ApiOperation("购物车列表")
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
+    @ResponseBody
+    public CommonResult< List<OmsCartItem>> getList(
+            @RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize,
+            @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum) {
+        List<OmsCartItem> list = omsCartItemService.list(null);
+        return CommonResult.success(list);
+    }
+
 }

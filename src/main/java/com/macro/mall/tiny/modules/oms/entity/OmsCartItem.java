@@ -1,6 +1,7 @@
 package com.macro.mall.tiny.modules.oms.entity;
 
 import com.baomidou.mybatisplus.extension.activerecord.Model;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
@@ -40,8 +41,10 @@ public class OmsCartItem extends Model<OmsCartItem> {
     //会员昵称
     private String memberNickname;
     //创建时间
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern="yyyy-MM-dd HH:mm:ss")
     private LocalDateTime createDate;
     //修改时间
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern="yyyy-MM-dd HH:mm:ss")
     private LocalDateTime modifyDate;
     //是否删除
     private Integer deleteStatus;

@@ -5,7 +5,6 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.macro.mall.tiny.modules.oms.dao.OmsCartItemDao;
 import com.macro.mall.tiny.modules.oms.entity.OmsCartItem;
 import com.macro.mall.tiny.modules.oms.service.OmsCartItemService;
-import com.macro.mall.tiny.modules.ums.entity.UmsMember;
 import com.macro.mall.tiny.modules.ums.service.UmsMemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,13 +26,12 @@ public class OmsCartItemServiceImpl extends ServiceImpl<OmsCartItemDao, OmsCartI
 
     @Override
     public int add(OmsCartItem cartItem) {
-        UmsMember member = memberService.getCurrentMember();
-
         int count = 0;
+       /* UmsMember member = memberService.getCurrentMember();
         cartItem.setMemberId(member.getId());
         cartItem.setDeleteStatus(0);
         cartItem.setMemberNickname(member.getNickname());
-
+*/
         OmsCartItem existCartItem = getCartItem(cartItem);
         if (existCartItem == null) {
             cartItem.setCreateDate(LocalDateTime.now());
@@ -43,6 +41,7 @@ public class OmsCartItemServiceImpl extends ServiceImpl<OmsCartItemDao, OmsCartI
             existCartItem.setQuantity(existCartItem.getQuantity() + cartItem.getQuantity());
             updateById(existCartItem);
         }
+        count =1;
         return count;
     }
 

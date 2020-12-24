@@ -16,16 +16,16 @@ public class UmsMemberCacheServiceImpl implements UmsMemberCacheService {
     @Autowired
     private RedisService redisService;
 
-    private String REDIS_DATABASE="9";
+    private String REDIS_DATABASE = "9";
 
-    private Long REDIS_EXPIRE=86400L;
+    private Long REDIS_EXPIRE = 86400L;
 
-    private Long REDIS_EXPIRE_AUTH_CODE=90L;
+    private Long REDIS_EXPIRE_AUTH_CODE = 90L;
 
 
-    private String REDIS_KEY_MEMBER="ums:member";
+    private String REDIS_KEY_MEMBER = "ums:member";
 
-    private String REDIS_KEY_AUTH_CODE="ums:authCode";
+    private String REDIS_KEY_AUTH_CODE = "ums:authCode";
 
     @Override
     public void delMember(Long memberId) {

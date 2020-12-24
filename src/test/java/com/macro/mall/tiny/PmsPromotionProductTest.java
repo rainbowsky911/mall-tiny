@@ -20,7 +20,7 @@ public class PmsPromotionProductTest extends MallTinyApplicationTests {
     @Test
     public void testGetRecommendBrandList() {
         List<PromotionProduct> list = portalProductDao.getPromotionProductList(Arrays.asList(28L));
-        list.stream().forEach(e->{
+        list.stream().forEach(e -> {
             System.out.println(e);
         });
 

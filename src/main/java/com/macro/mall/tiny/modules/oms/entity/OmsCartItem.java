@@ -41,10 +41,10 @@ public class OmsCartItem extends Model<OmsCartItem> {
     //会员昵称
     private String memberNickname;
     //创建时间
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern="yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime createDate;
     //修改时间
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern="yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime modifyDate;
     //是否删除
     private Integer deleteStatus;
@@ -56,8 +56,6 @@ public class OmsCartItem extends Model<OmsCartItem> {
     private String productSn;
     //商品销售属性:[{"key":"颜色","value":"颜色"},{"key":"容量","value":"4G"}]
     private String productAttr;
-
-
 
 
     /**

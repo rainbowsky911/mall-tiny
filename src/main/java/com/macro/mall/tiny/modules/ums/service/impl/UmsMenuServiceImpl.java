@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
  * Created by macro on 2020/2/2.
  */
 @Service
-public class UmsMenuServiceImpl extends ServiceImpl<UmsMenuMapper,UmsMenu>implements UmsMenuService {
+public class UmsMenuServiceImpl extends ServiceImpl<UmsMenuMapper, UmsMenu> implements UmsMenuService {
 
     @Override
     public boolean create(UmsMenu umsMenu) {
@@ -55,11 +55,11 @@ public class UmsMenuServiceImpl extends ServiceImpl<UmsMenuMapper,UmsMenu>implem
 
     @Override
     public Page<UmsMenu> list(Long parentId, Integer pageSize, Integer pageNum) {
-        Page<UmsMenu> page = new Page<>(pageNum,pageSize);
+        Page<UmsMenu> page = new Page<>(pageNum, pageSize);
         QueryWrapper<UmsMenu> wrapper = new QueryWrapper<>();
-        wrapper.lambda().eq(UmsMenu::getParentId,parentId)
+        wrapper.lambda().eq(UmsMenu::getParentId, parentId)
                 .orderByDesc(UmsMenu::getSort);
-        return page(page,wrapper);
+        return page(page, wrapper);
     }
 
     @Override

@@ -1,6 +1,6 @@
 package com.macro.mall.tiny;
 
-import com.macro.mall.tiny.modules.sms.dao.SmsCouponHistoryDao;
+import com.macro.mall.tiny.modules.ums.dao.HomeDao;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,14 +9,14 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class SmsCupponHistoryTest extends MallTinyApplicationTests {
+public class HomeContentTest {
 
     @Autowired
-    private SmsCouponHistoryDao smsCouponHistoryDao;
+    private HomeDao homeDao;
 
     @Test
-    public void test_smscupponTest() {
-        smsCouponHistoryDao.getDetailList(1L).stream().forEach(e -> {
+    public void test_homeContent() {
+        homeDao.getRecommendBrandList(0, 10).stream().forEach(e -> {
             System.out.println(e);
         });
     }

@@ -15,6 +15,7 @@ public interface CmsSubjectService extends IService<CmsSubject> {
 
     /**
      * 查询所有专题
+     *
      * @return
      */
     List<CmsSubject> getCmsSubjectList();

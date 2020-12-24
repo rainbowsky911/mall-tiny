@@ -16,10 +16,9 @@ public interface OmsOrderService extends IService<OmsOrder> {
 
 
     /**
-     *
      * 动态查询订单
+     *
      * @param orderQueryParam
-
      * @return
      */
     IPage<OmsOrder> getList(Page page, OmsOrderQueryParam orderQueryParam);
@@ -27,6 +26,7 @@ public interface OmsOrderService extends IService<OmsOrder> {
 
     /**
      * 分页查询订单
+     *
      * @param pageNum
      * @param pageSize
      * @return

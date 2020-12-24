@@ -17,14 +17,14 @@ public class PmsbrandTest {
     private PmsBrandService pmsBrandService;
 
     @Test
-    public  void testUpdateBrand(){
-        LambdaUpdateWrapper<PmsBrand> lambdaUpdate =new LambdaUpdateWrapper();
-        lambdaUpdate.set(PmsBrand::getFactoryStatus,0);
-        lambdaUpdate.eq(PmsBrand::getId,1);
+    public void testUpdateBrand() {
+        LambdaUpdateWrapper<PmsBrand> lambdaUpdate = new LambdaUpdateWrapper();
+        lambdaUpdate.set(PmsBrand::getFactoryStatus, 0);
+        lambdaUpdate.eq(PmsBrand::getId, 1);
         boolean update = pmsBrandService.update(lambdaUpdate);
         if (update) {
             System.out.println("succ");
-        }else {
+        } else {
             System.out.println("fail");
         }
 

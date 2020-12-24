@@ -16,7 +16,9 @@ import org.apache.ibatis.annotations.Param;
 public interface OmsOrderDao extends BaseMapper<OmsOrder> {
 
 
-    /**分页查询订单
+    /**
+     * 分页查询订单
+     *
      * @param page
      * @param orderQueryParam
      * @return

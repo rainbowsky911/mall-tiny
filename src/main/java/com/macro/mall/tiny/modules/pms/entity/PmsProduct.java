@@ -103,7 +103,6 @@ public class PmsProduct extends Model<PmsProduct> {
     private String productCategoryName;
 
 
-
     /**
      * 获取主键值
      *

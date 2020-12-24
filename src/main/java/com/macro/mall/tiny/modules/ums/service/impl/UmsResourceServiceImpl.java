@@ -19,9 +19,10 @@ import java.util.Date;
  * Created by macro on 2020/2/2.
  */
 @Service
-public class UmsResourceServiceImpl extends ServiceImpl<UmsResourceMapper,UmsResource>implements UmsResourceService {
+public class UmsResourceServiceImpl extends ServiceImpl<UmsResourceMapper, UmsResource> implements UmsResourceService {
     @Autowired
     private UmsAdminCacheService adminCacheService;
+
     @Override
     public boolean create(UmsResource umsResource) {
         umsResource.setCreateTime(new Date());
@@ -45,18 +46,18 @@ public class UmsResourceServiceImpl extends ServiceImpl<UmsResourceMapper,UmsRes
 
     @Override
     public Page<UmsResource> list(Long categoryId, String nameKeyword, String urlKeyword, Integer pageSize, Integer pageNum) {
-        Page<UmsResource> page = new Page<>(pageNum,pageSize);
+        Page<UmsResource> page = new Page<>(pageNum, pageSize);
         QueryWrapper<UmsResource> wrapper = new QueryWrapper<>();
         LambdaQueryWrapper<UmsResource> lambda = wrapper.lambda();
-        if(categoryId!=null){
-            lambda.eq(UmsResource::getCategoryId,categoryId);
+        if (categoryId != null) {
+            lambda.eq(UmsResource::getCategoryId, categoryId);
         }
-        if(StrUtil.isNotEmpty(nameKeyword)){
-            lambda.like(UmsResource::getName,nameKeyword);
+        if (StrUtil.isNotEmpty(nameKeyword)) {
+            lambda.like(UmsResource::getName, nameKeyword);
         }
-        if(StrUtil.isNotEmpty(urlKeyword)){
-            lambda.like(UmsResource::getUrl,urlKeyword);
+        if (StrUtil.isNotEmpty(urlKeyword)) {
+            lambda.like(UmsResource::getUrl, urlKeyword);
         }
-        return page(page,wrapper);
+        return page(page, wrapper);
     }
 }

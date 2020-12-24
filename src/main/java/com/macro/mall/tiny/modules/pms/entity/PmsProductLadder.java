@@ -28,7 +28,6 @@ public class PmsProductLadder extends Model<PmsProductLadder> {
     private Double price;
 
 
-
     /**
      * 获取主键值
      *

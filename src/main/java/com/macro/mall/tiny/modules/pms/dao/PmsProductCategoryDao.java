@@ -16,6 +16,7 @@ public interface PmsProductCategoryDao extends BaseMapper<PmsProductCategory> {
 
     /**
      * 获取分类及其子分类
+     *
      * @return
      */
     List<PmsProductCategoryWithChildrenItem> getCategoryListWithChild();

@@ -48,3 +48,4 @@ secure:
       - /admin/logout
       - /order/**
       - /cartItem/**
+      - /home/**

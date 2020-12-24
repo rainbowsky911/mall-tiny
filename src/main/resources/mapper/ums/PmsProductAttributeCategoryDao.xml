@@ -11,9 +11,8 @@
     </resultMap>
 
 
-
     <resultMap id="getListWithAttrMap" type="com.macro.mall.tiny.modules.ums.dto.PmsProductAttributeCategoryItem">
-        <collection property="productAttributeList" ofType="com.macro.mall.tiny.modules.pms.entity.PmsProductAttribute" >
+        <collection property="productAttributeList" ofType="com.macro.mall.tiny.modules.pms.entity.PmsProductAttribute">
             <result property="id" column="id" jdbcType="INTEGER"/>
             <result property="productAttributeCategoryId" column="product_attribute_category_id" jdbcType="INTEGER"/>
             <result property="name" column="name" jdbcType="VARCHAR"/>
@@ -28,7 +27,6 @@
             <result property="type" column="type" jdbcType="INTEGER"/>
         </collection>
     </resultMap>
-
 
 
     <select id="getListWithAttr"
@@ -46,10 +44,6 @@
             AND pa.type = 1;
 
     </select>
-
-
-
-
 
 
 </mapper>

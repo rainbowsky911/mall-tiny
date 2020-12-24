@@ -52,18 +52,19 @@ public class PmsProductCategoryController extends ApiController {
 
     @ApiOperation("修改显示状态")
     @RequestMapping(value = "/update/navStatus", method = RequestMethod.POST)
-    public  CommonResult updateNavStatus(@RequestParam ("ids")Long ids,@RequestParam("navStatus") Integer navStatus ){
+    public CommonResult updateNavStatus(@RequestParam("ids") Long ids, @RequestParam("navStatus") Integer navStatus) {
 
-      int count =  pmsProductCategoryService.updateNavStatus(ids, navStatus);
+        int count = pmsProductCategoryService.updateNavStatus(ids, navStatus);
         if (count > 0) {
             return CommonResult.success(count);
         } else {
             return CommonResult.failed();
         }
     }
+
     @ApiOperation("修改显示状态")
     @RequestMapping(value = "/update/showStatus", method = RequestMethod.POST)
-    public  CommonResult updateShowStatus(@RequestParam ("ids")Long ids,@RequestParam("showStatus") Integer showStatus ){
+    public CommonResult updateShowStatus(@RequestParam("ids") Long ids, @RequestParam("showStatus") Integer showStatus) {
 
         int count = pmsProductCategoryService.updateShowStatus(ids, showStatus);
         if (count > 0) {

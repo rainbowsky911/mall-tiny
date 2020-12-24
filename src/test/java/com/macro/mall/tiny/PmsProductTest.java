@@ -48,12 +48,11 @@ public class PmsProductTest extends MallTinyApplicationTests {
 
 
     @Test
-    public  void testList(){
+    public void testList() {
         for (PmsProduct e : productService.getList(1, 10).getRecords()) {
             System.out.println(e);
         }
     }
-
 
 
 }

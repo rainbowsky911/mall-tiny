@@ -39,31 +39,31 @@ public class PmsProductAttributeServiceImpl extends ServiceImpl<PmsProductAttrib
 
     @Override
     public Page<PmsProductAttribute> getList(Long id, Integer pageSize, Integer pageNum, Integer type) {
-        Page<PmsProductAttribute> page = new Page<>(pageNum,pageSize);
-        LambdaQueryWrapper <PmsProductAttribute>lambdaQueryWrapper =new LambdaQueryWrapper();
-        lambdaQueryWrapper.eq(PmsProductAttribute::getId,id);
-        lambdaQueryWrapper.eq(PmsProductAttribute::getType,type);
-         return  page(page,lambdaQueryWrapper);
+        Page<PmsProductAttribute> page = new Page<>(pageNum, pageSize);
+        LambdaQueryWrapper<PmsProductAttribute> lambdaQueryWrapper = new LambdaQueryWrapper();
+        lambdaQueryWrapper.eq(PmsProductAttribute::getId, id);
+        lambdaQueryWrapper.eq(PmsProductAttribute::getType, type);
+        return page(page, lambdaQueryWrapper);
     }
 
 
     @Override
     public int updatePmsProductAttribute(Long id, PmsProductAttributeParam pmsProductAttributeParam) {
-        PmsProductAttribute pmsProductAttribute =new PmsProductAttribute();
-        BeanUtils.copyProperties(pmsProductAttributeParam,pmsProductAttribute);
+        PmsProductAttribute pmsProductAttribute = new PmsProductAttribute();
+        BeanUtils.copyProperties(pmsProductAttributeParam, pmsProductAttribute);
         pmsProductAttribute.setId(id);
         boolean update = updateById(pmsProductAttribute);
         if (update) {
-            return  1;
-        }else {
+            return 1;
+        } else {
             return 0;
         }
     }
 
     @Override
     public int create(PmsProductAttributeParam productAttributeParam) {
-        PmsProductAttribute pmsProductAttribute =new PmsProductAttribute();
-        BeanUtils.copyProperties(productAttributeParam,pmsProductAttribute);
+        PmsProductAttribute pmsProductAttribute = new PmsProductAttribute();
+        BeanUtils.copyProperties(productAttributeParam, pmsProductAttribute);
 
         boolean saveStatus = save(pmsProductAttribute);
         PmsProductAttributeCategory pmsProductAttributeCategory =
@@ -71,10 +71,10 @@ public class PmsProductAttributeServiceImpl extends ServiceImpl<PmsProductAttrib
 
         //更新商品属性以后要更新商品属性分类数量
 
-        if(pmsProductAttribute.getType()==0){
-            pmsProductAttributeCategory.setAttributeCount(pmsProductAttributeCategory.getAttributeCount()+1);
-        }else if(pmsProductAttribute.getType()==1){
-            pmsProductAttributeCategory.setParamCount(pmsProductAttributeCategory.getParamCount()+1);
+        if (pmsProductAttribute.getType() == 0) {
+            pmsProductAttributeCategory.setAttributeCount(pmsProductAttributeCategory.getAttributeCount() + 1);
+        } else if (pmsProductAttribute.getType() == 1) {
+            pmsProductAttributeCategory.setParamCount(pmsProductAttributeCategory.getParamCount() + 1);
         }
 
 
@@ -83,9 +83,9 @@ public class PmsProductAttributeServiceImpl extends ServiceImpl<PmsProductAttrib
                 .set(PmsProductAttributeCategory::getAttributeCount,pmsProductAttributeCategory.getAttributeCount()+1)
         .eq(PmsProductAttributeCategory::getId,pmsProductAttributeCategory.getId());
         pmsProductCategoryCategoryService.update();*/
-        if (saveStatus ){
+        if (saveStatus) {
             return 1;
-        }else {
+        } else {
             return 0;
         }
     }

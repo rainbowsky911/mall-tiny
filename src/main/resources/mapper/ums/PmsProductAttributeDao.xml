@@ -18,9 +18,6 @@
     </resultMap>
 
 
-
-
-
     <select id="getProductAttrInfo" resultType="com.macro.mall.tiny.modules.pms.dto.ProductAttrInfo">
 
             SELECT

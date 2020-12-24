@@ -23,18 +23,19 @@ import java.util.List;
 public interface PmsProductService extends IService<PmsProduct> {
 
 
-
     /**
      * 创建商品信息
+     *
      * @param pmsProductParam
      * @return
      */
-    @Transactional(isolation = Isolation.DEFAULT,propagation = Propagation.REQUIRED)
+    @Transactional(isolation = Isolation.DEFAULT, propagation = Propagation.REQUIRED)
     int create(PmsProductParam pmsProductParam);
 
 
     /**
      * 分页获取商品列表
+     *
      * @param pageSize
      * @param pageNum
      * @return
@@ -43,13 +44,16 @@ public interface PmsProductService extends IService<PmsProduct> {
 
     /**
      * 修改出版状态
+     *
      * @param ids
      * @param publishStatus
      * @return
      */
     int updatePublishStatus(Long ids, Integer publishStatus);
 
-    /**修改新品状态
+    /**
+     * 修改新品状态
+     *
      * @param ids
      * @param newStatus
      * @return
@@ -58,6 +62,7 @@ public interface PmsProductService extends IService<PmsProduct> {
 
     /**
      * 修改推荐状态
+     *
      * @param ids
      * @param recommendStatus
      * @return
@@ -67,6 +72,7 @@ public interface PmsProductService extends IService<PmsProduct> {
 
     /**
      * 更新商品
+     *
      * @param id
      * @param pmsProductParam
      * @return
@@ -75,6 +81,7 @@ public interface PmsProductService extends IService<PmsProduct> {
 
     /**
      * 查看DTO商品信息
+     *
      * @param id
      * @return
      */
@@ -82,6 +89,7 @@ public interface PmsProductService extends IService<PmsProduct> {
 
     /**
      * 分页查询
+     *
      * @param productQueryParam
      * @param pageSize
      * @param pageNum
@@ -90,5 +98,5 @@ public interface PmsProductService extends IService<PmsProduct> {
     IPage<PmsProduct> list(PmsProductQueryParam productQueryParam, Integer pageSize, Integer pageNum);
 
 
-    IPage<List<PmsProduct>> getDynamic(Page page,@Param("item")PmsProductQueryParam param);
+    IPage<List<PmsProduct>> getDynamic(Page page, @Param("item") PmsProductQueryParam param);
 }

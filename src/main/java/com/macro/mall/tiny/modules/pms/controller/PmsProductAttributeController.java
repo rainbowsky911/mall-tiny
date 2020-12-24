@@ -57,12 +57,12 @@ public class PmsProductAttributeController extends ApiController {
     @RequestMapping(value = "/list/{id}", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<CommonPage<PmsProductAttribute>> getList(
-            @PathVariable ("id") Long id,
+            @PathVariable("id") Long id,
             @RequestParam(defaultValue = "5") Integer pageSize,
             @RequestParam(defaultValue = "1") Integer pageNum,
-            @RequestParam ("type") Integer type) {
+            @RequestParam("type") Integer type) {
         Page<PmsProductAttribute> productAttributeCategoryList =
-                pmsProductAttributeService.getList(id,pageSize, pageNum,type);
+                pmsProductAttributeService.getList(id, pageSize, pageNum, type);
         return CommonResult.success(CommonPage.restPage(productAttributeCategoryList));
     }
 
@@ -72,7 +72,7 @@ public class PmsProductAttributeController extends ApiController {
     @ResponseBody
     public CommonResult updateAttrbute(
             @PathVariable("id") Long id,
-             @RequestBody PmsProductAttributeParam pmsProductAttributeParam) {
+            @RequestBody PmsProductAttributeParam pmsProductAttributeParam) {
         int count = pmsProductAttributeService.updatePmsProductAttribute(id, pmsProductAttributeParam);
         if (count > 0) {
             return CommonResult.success(count);

@@ -3,7 +3,8 @@
 <mapper namespace="com.macro.mall.tiny.modules.sms.dao.SmsCouponHistoryDao">
 
     <resultMap type="com.macro.mall.tiny.modules.sms.entity.SmsCouponHistoryDetail" id="getDetailList">
-        <association property="coupon" resultMap="com.macro.mall.tiny.modules.sms.dao.SmsCouponDao.SmsCouponMap" columnPrefix="c_">
+        <association property="coupon" resultMap="com.macro.mall.tiny.modules.sms.dao.SmsCouponDao.SmsCouponMap"
+                     columnPrefix="c_">
         </association>
         <collection property="productRelationList" columnPrefix="cpr_"
                     resultMap="com.macro.mall.tiny.modules.sms.dao.SmsCouponProductRelationDao.SmsCouponProductRelationMap">

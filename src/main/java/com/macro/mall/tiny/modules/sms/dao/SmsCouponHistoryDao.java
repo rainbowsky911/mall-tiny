@@ -16,6 +16,7 @@ public interface SmsCouponHistoryDao extends BaseMapper<SmsCouponHistory> {
 
     /**
      * 获取所有优惠券
+     *
      * @param id
      * @return
      */

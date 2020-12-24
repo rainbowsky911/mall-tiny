@@ -40,7 +40,7 @@ public class OmsCartItemController extends ApiController {
     @ApiOperation("购物车列表")
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     @ResponseBody
-    public CommonResult< List<OmsCartItem>> getList(
+    public CommonResult<List<OmsCartItem>> getList(
             @RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize,
             @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum) {
         List<OmsCartItem> list = omsCartItemService.list(null);

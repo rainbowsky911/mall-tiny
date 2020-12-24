@@ -60,8 +60,6 @@ public class OmsOrderItem extends Model<OmsOrderItem> {
     private String productAttr;
 
 
-
-
     /**
      * 获取主键值
      *

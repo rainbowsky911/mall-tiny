@@ -9,7 +9,7 @@ import lombok.Data;
 
 @Data
 
-public class PmsProductResult  extends PmsProductParam {
+public class PmsProductResult extends PmsProductParam {
 
 
     @ApiModelProperty("商品所选分类的父id")

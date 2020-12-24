@@ -18,7 +18,9 @@ import java.util.List;
 public interface PmsProductAttributeCategoryService extends IService<PmsProductAttributeCategory> {
 
 
-    /**获取包含属性的商品属性分类
+    /**
+     * 获取包含属性的商品属性分类
+     *
      * @return
      */
     List<PmsProductAttributeCategoryItem> getListWithAttr();
@@ -26,6 +28,7 @@ public interface PmsProductAttributeCategoryService extends IService<PmsProductA
 
     /**
      * 查询商品属性分类
+     *
      * @param pageSize
      * @param pageNum
      * @return
@@ -35,6 +38,7 @@ public interface PmsProductAttributeCategoryService extends IService<PmsProductA
 
     /**
      * 修改商品分类名称
+     *
      * @param id
      * @param name
      * @return

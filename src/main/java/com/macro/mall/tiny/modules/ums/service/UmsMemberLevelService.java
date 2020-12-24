@@ -15,6 +15,7 @@ public interface UmsMemberLevelService extends IService<UmsMemberLevel> {
 
     /**
      * 查询会员等级
+     *
      * @param defaultStatus
      * @return
      */

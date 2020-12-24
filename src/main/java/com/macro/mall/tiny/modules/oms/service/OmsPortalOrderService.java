@@ -12,6 +12,7 @@ public interface OmsPortalOrderService {
 
     /**
      * 根据用户购物车信息生成确认单信息
+     *
      * @param cartIds
      */
     ConfirmOrderResult generateConfirmOrder(List<Long> cartIds);

@@ -20,14 +20,17 @@ public interface PmsBrandService extends IService<PmsBrand> {
 
     /**
      * 查询所有商品品牌分类
+     *
      * @param pageSize
      * @param pageNum
      * @return
      */
-    Page<PmsBrand> getList( Integer pageSize, Integer pageNum);
+    Page<PmsBrand> getList(Integer pageSize, Integer pageNum);
 
 
-    /**修改品牌制造商状态
+    /**
+     * 修改品牌制造商状态
+     *
      * @param ids
      * @param factoryStatus
      * @return
@@ -37,6 +40,7 @@ public interface PmsBrandService extends IService<PmsBrand> {
 
     /**
      * 修改显示状态
+     *
      * @param ids
      * @param showStatus
      * @return
@@ -45,9 +49,10 @@ public interface PmsBrandService extends IService<PmsBrand> {
 
     /**
      * 修改品牌信息
+     *
      * @param pmsBrandParam
      * @return
      */
     @Transactional
-    int  updateBrand(Long id ,PmsBrandParam pmsBrandParam);
+    int updateBrand(Long id, PmsBrandParam pmsBrandParam);
 }

@@ -259,12 +259,12 @@ public class PmsProductServiceImpl extends ServiceImpl<PmsProductDao, PmsProduct
     }
 
     @Override
-    public IPage<PmsProduct>  list(PmsProductQueryParam productQueryParam, Integer pageSize, Integer pageNum) {
+    public IPage<PmsProduct> list(PmsProductQueryParam productQueryParam, Integer pageSize, Integer pageNum) {
         Page<PmsProduct> page = new Page<>(pageNum, pageSize);
         QueryWrapper<PmsProduct> wrapper = new QueryWrapper<>();
-        PmsProduct product =new PmsProduct();
-        BeanUtils.copyProperties(productQueryParam,product);
-        wrapper.like(ObjectUtils.isNotEmpty(productQueryParam.getKeyword()),"key_words" , productQueryParam.getKeyword());
+        PmsProduct product = new PmsProduct();
+        BeanUtils.copyProperties(productQueryParam, product);
+        wrapper.like(ObjectUtils.isNotEmpty(productQueryParam.getKeyword()), "key_words", productQueryParam.getKeyword());
         wrapper.like(ObjectUtils.isNotEmpty(productQueryParam.getBrandId()), "brand_id", productQueryParam.getBrandId());
         wrapper.like(ObjectUtils.isNotEmpty(productQueryParam.getProductSn()), "product_sn", productQueryParam.getProductSn());
         wrapper.like(ObjectUtils.isNotEmpty(productQueryParam.getPublishStatus()), "publish_status", productQueryParam.getPublishStatus());
@@ -277,7 +277,7 @@ public class PmsProductServiceImpl extends ServiceImpl<PmsProductDao, PmsProduct
 
     @Override
     public IPage<List<PmsProduct>> getDynamic(Page page, PmsProductQueryParam param) {
-        return pmsProductDao.getDynamic(page,param);
+        return pmsProductDao.getDynamic(page, param);
     }
 
 }

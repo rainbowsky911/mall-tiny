@@ -137,26 +137,26 @@
 
     <select id="getDynamic" resultType="java.util.List">
         <!--通过主键修改数据-->
-            select  * from  mall.pms_product
+        select * from mall.pms_product
 
-                <if test="item.brandId != null">
-                    brand_id = #{item.brandId},
-                </if>
+        <if test="item.brandId != null">
+            brand_id = #{item.brandId},
+        </if>
 
-                <if test="item.productCategoryId != null">
-                    product_category_id = #{item.productCategoryId},
-                </if>
+        <if test="item.productCategoryId != null">
+            product_category_id = #{item.productCategoryId},
+        </if>
 
-                <if test="item.publishStatus != null">
-                    publish_status = #{item.publishStatus},
-                </if>
+        <if test="item.publishStatus != null">
+            publish_status = #{item.publishStatus},
+        </if>
 
-                <if test="verifyStatus != null">
-                    verify_status = #{item.verifyStatus},
-                </if>
-                <if test="productSn != null">
-                    product_sn = #{item.productCategoryId},
-                </if>
+        <if test="verifyStatus != null">
+            verify_status = #{item.verifyStatus},
+        </if>
+        <if test="productSn != null">
+            product_sn = #{item.productCategoryId},
+        </if>
     </select>
 
 </mapper>

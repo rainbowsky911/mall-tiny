@@ -22,6 +22,7 @@ public class CmsPrefrenceAreaProductRelation extends Model<CmsPrefrenceAreaProdu
     private Long prefrenceAreaId;
 
     private Long productId;
+
     /**
      * 获取主键值
      *

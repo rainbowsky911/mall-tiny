@@ -38,39 +38,39 @@ public class PmsBrandServiceImpl extends ServiceImpl<PmsBrandDao, PmsBrand> impl
 
     @Override
     public Page<PmsBrand> getList(Integer pageSize, Integer pageNum) {
-        Page<PmsBrand> page = new Page<>(pageNum,pageSize);
+        Page<PmsBrand> page = new Page<>(pageNum, pageSize);
         QueryWrapper<PmsBrand> wrapper = new QueryWrapper<>();
-        return page(page,wrapper);
+        return page(page, wrapper);
     }
 
     @Override
     public int updateFactoryStatus(Long ids, Integer factoryStatus) {
-        LambdaUpdateWrapper<PmsBrand> lambdaUpdate =new LambdaUpdateWrapper();
-        lambdaUpdate.set(PmsBrand::getFactoryStatus,factoryStatus);
-        lambdaUpdate.eq(PmsBrand::getId,ids);
+        LambdaUpdateWrapper<PmsBrand> lambdaUpdate = new LambdaUpdateWrapper();
+        lambdaUpdate.set(PmsBrand::getFactoryStatus, factoryStatus);
+        lambdaUpdate.eq(PmsBrand::getId, ids);
         boolean update = update(lambdaUpdate);
         if (update) {
             return 1;
-        }else {
+        } else {
             return 0;
         }
     }
 
     @Override
     public int updateShowStatus(Long ids, Integer showStatus) {
-        LambdaUpdateWrapper<PmsBrand> lambdaUpdate =new LambdaUpdateWrapper();
-        lambdaUpdate.set(PmsBrand::getShowStatus,showStatus);
-        lambdaUpdate.eq(PmsBrand::getId,ids);
+        LambdaUpdateWrapper<PmsBrand> lambdaUpdate = new LambdaUpdateWrapper();
+        lambdaUpdate.set(PmsBrand::getShowStatus, showStatus);
+        lambdaUpdate.eq(PmsBrand::getId, ids);
         boolean update = update(lambdaUpdate);
         if (update) {
             return 1;
-        }else {
+        } else {
             return 0;
         }
     }
 
     @Override
-    public int updateBrand(Long id,PmsBrandParam pmsBrandParam) {
+    public int updateBrand(Long id, PmsBrandParam pmsBrandParam) {
         PmsBrand pmsBrand = new PmsBrand();
         BeanUtils.copyProperties(pmsBrandParam, pmsBrand);
         pmsBrand.setId(id);
@@ -80,7 +80,7 @@ public class PmsBrandServiceImpl extends ServiceImpl<PmsBrandDao, PmsBrand> impl
                 .eq(PmsProduct::getBrandId, id));
         if (pmsBrandStatus && productStatus) {
             return 1;
-        }else {
+        } else {
 
             return 0;
         }

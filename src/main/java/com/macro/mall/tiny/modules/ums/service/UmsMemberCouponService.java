@@ -11,7 +11,6 @@ import java.util.List;
 public interface UmsMemberCouponService {
 
 
-
     /**
      * 根据购物车信息获取可用优惠券
      */

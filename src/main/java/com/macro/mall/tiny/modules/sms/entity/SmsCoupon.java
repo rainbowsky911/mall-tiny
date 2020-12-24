@@ -55,8 +55,6 @@ public class SmsCoupon extends Model<SmsCoupon> {
     private Integer memberLevel;
 
 
-
-
     /**
      * 获取主键值
      *

@@ -16,6 +16,5 @@ import java.util.List;
 public interface PmsProductAttributeDao extends BaseMapper<PmsProductAttribute> {
 
 
-
     List<ProductAttrInfo> getProductAttrInfo(@Param("productCategoryId") Long productCategoryId);
 }

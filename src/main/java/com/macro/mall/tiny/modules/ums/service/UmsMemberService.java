@@ -11,7 +11,9 @@ import com.macro.mall.tiny.modules.ums.entity.UmsMember;
  */
 public interface UmsMemberService extends IService<UmsMember> {
 
-    /**获取当前登录会员
+    /**
+     * 获取当前登录会员
+     *
      * @return
      */
     UmsMember getCurrentMember();

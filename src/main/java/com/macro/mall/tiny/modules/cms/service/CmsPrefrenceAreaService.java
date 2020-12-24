@@ -15,6 +15,7 @@ public interface CmsPrefrenceAreaService extends IService<CmsPrefrenceArea> {
 
     /**
      * 查询所有优选
+     *
      * @return
      */
     List<CmsPrefrenceArea> getCmsPrefrenceAreaList();

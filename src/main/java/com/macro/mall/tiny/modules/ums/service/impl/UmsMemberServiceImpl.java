@@ -32,14 +32,14 @@ public class UmsMemberServiceImpl extends ServiceImpl<UmsMemberDao, UmsMember> i
     @Override
     public UmsMember getCurrentMember() {
         String userStr = request.getHeader(AuthConstant.USER_TOKEN_HEADER);
-        if(StrUtil.isEmpty(userStr)){
+        if (StrUtil.isEmpty(userStr)) {
             Asserts.fail(ResultCode.UNAUTHORIZED);
         }
         UserDto userDto = JSONUtil.toBean(userStr, UserDto.class);
         UmsMember member = memberCacheService.getMember(userDto.getId());
-        if(member!=null){
+        if (member != null) {
             return member;
-        }else{
+        } else {
             member = getById(userDto.getId());
             memberCacheService.setMember(member);
             return member;

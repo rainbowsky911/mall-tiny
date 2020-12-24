@@ -31,7 +31,7 @@ public class PmsProductAttributeCategoryServiceImpl extends ServiceImpl<PmsProdu
 
 
     @Autowired
-    private  PmsProductAttributeCategoryDao pmsProductAttributeCategoryDao;
+    private PmsProductAttributeCategoryDao pmsProductAttributeCategoryDao;
 
     @Override
     public List<PmsProductAttributeCategoryItem> getListWithAttr() {
@@ -40,22 +40,22 @@ public class PmsProductAttributeCategoryServiceImpl extends ServiceImpl<PmsProdu
 
     @Override
     public Page<PmsProductAttributeCategory> getList(Integer pageSize, Integer pageNum) {
-        Page<PmsProductAttributeCategory> page = new Page<>(pageNum,pageSize);
+        Page<PmsProductAttributeCategory> page = new Page<>(pageNum, pageSize);
         QueryWrapper<PmsProductAttributeCategory> wrapper = new QueryWrapper<>();
-        return page(page,wrapper);
+        return page(page, wrapper);
     }
 
     @Override
     public int update(Long id, String name) {
-        boolean update=false;
-        if(ObjectUtil.isNotNull(id)){
-             update = update(new LambdaUpdateWrapper<PmsProductAttributeCategory>()
+        boolean update = false;
+        if (ObjectUtil.isNotNull(id)) {
+            update = update(new LambdaUpdateWrapper<PmsProductAttributeCategory>()
                     .set(PmsProductAttributeCategory::getName, name)
                     .eq(PmsProductAttributeCategory::getId, id));
         }
-        if(update){
+        if (update) {
             return 1;
-        }else {
+        } else {
 
             return 0;
         }

@@ -13,7 +13,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  */
 @Configuration
 @EnableTransactionManagement
-@MapperScan({"com.macro.mall.tiny.modules.*.mapper","com.macro.mall.tiny.modules.*.dao"})
+@MapperScan({"com.macro.mall.tiny.modules.*.mapper", "com.macro.mall.tiny.modules.*.dao"})
 public class MyBatisConfig {
     @Bean
     public PaginationInterceptor paginationInterceptor() {

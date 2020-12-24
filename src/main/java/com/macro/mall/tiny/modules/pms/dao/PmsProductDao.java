@@ -21,6 +21,7 @@ public interface PmsProductDao extends BaseMapper<PmsProduct> {
 
     /**
      * 查看DTO商品信息类
+     *
      * @param id
      * @return
      */

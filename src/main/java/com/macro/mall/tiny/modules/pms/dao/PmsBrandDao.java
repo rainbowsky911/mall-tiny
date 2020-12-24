@@ -14,5 +14,4 @@ import com.macro.mall.tiny.modules.pms.entity.PmsProductCategory;
 public interface PmsBrandDao extends BaseMapper<PmsBrand> {
 
 
-
 }

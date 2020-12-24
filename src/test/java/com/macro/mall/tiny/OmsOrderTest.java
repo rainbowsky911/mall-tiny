@@ -9,15 +9,15 @@ import javax.annotation.Resource;
 
 public class
 
-OmsOrderTest extends  MallTinyApplicationTests {
+OmsOrderTest extends MallTinyApplicationTests {
 
 
     @Resource
     private OmsOrderService omsOrderService;
 
     @Test
-    public  void testOrderList(){
-        omsOrderService.getList(new Page(0,10),new OmsOrderQueryParam().setStatus(1)).getRecords().stream().forEach(e->{
+    public void testOrderList() {
+        omsOrderService.getList(new Page(0, 10), new OmsOrderQueryParam().setStatus(1)).getRecords().stream().forEach(e -> {
             System.out.println(e);
         });
     }

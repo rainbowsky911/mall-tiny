@@ -29,28 +29,28 @@ import java.util.List;
 public class PmsProductCategoryServiceImpl extends ServiceImpl<PmsProductCategoryDao, PmsProductCategory> implements PmsProductCategoryService {
 
     @Autowired
-    private  PmsProductCategoryDao productCategoryDao;
+    private PmsProductCategoryDao productCategoryDao;
 
     @Override
-    public Page<PmsProductCategory> getList(Long  parentId, Integer pageSize, Integer pageNum) {
-        Page<PmsProductCategory> page = new Page<>(pageNum,pageSize);
+    public Page<PmsProductCategory> getList(Long parentId, Integer pageSize, Integer pageNum) {
+        Page<PmsProductCategory> page = new Page<>(pageNum, pageSize);
         QueryWrapper<PmsProductCategory> wrapper = new QueryWrapper<>();
         LambdaQueryWrapper<PmsProductCategory> lambda = wrapper.lambda();
-        if(ObjectUtil.isNotNull(parentId)){
-            lambda.eq(PmsProductCategory::getParentId,parentId);
+        if (ObjectUtil.isNotNull(parentId)) {
+            lambda.eq(PmsProductCategory::getParentId, parentId);
         }
-        return page(page,wrapper);
+        return page(page, wrapper);
     }
 
     @Override
     public int updateNavStatus(Long ids, Integer navStatus) {
         LambdaUpdateWrapper<PmsProductCategory> lambda = new LambdaUpdateWrapper<>();
         lambda.set(PmsProductCategory::getNavStatus, navStatus.byteValue());
-        lambda.eq(PmsProductCategory::getId,ids);
+        lambda.eq(PmsProductCategory::getId, ids);
         boolean update = update(lambda);
         if (update) {
             return 1;
-        }else {
+        } else {
             return 0;
         }
     }
@@ -59,17 +59,17 @@ public class PmsProductCategoryServiceImpl extends ServiceImpl<PmsProductCategor
     public int updateShowStatus(Long ids, Integer showStatus) {
         LambdaUpdateWrapper<PmsProductCategory> lambda = new LambdaUpdateWrapper<>();
         lambda.set(PmsProductCategory::getNavStatus, showStatus.byteValue());
-        lambda.eq(PmsProductCategory::getId,ids);
+        lambda.eq(PmsProductCategory::getId, ids);
         boolean update = update(lambda);
         if (update) {
             return 1;
-        }else {
+        } else {
             return 0;
         }
     }
 
     @Override
     public List<PmsProductCategoryWithChildrenItem> getCategoryListWithChild() {
-        return   productCategoryDao.getCategoryListWithChild();
+        return productCategoryDao.getCategoryListWithChild();
     }
 }

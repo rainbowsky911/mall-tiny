@@ -73,8 +73,6 @@ public class OmsOrderReturnApply extends Model<OmsOrderReturnApply> {
     private String receiveNote;
 
 
-
-
     /**
      * 获取主键值
      *

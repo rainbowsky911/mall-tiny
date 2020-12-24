@@ -107,8 +107,6 @@ public class OmsOrder extends Model<OmsOrder> {
     private LocalDateTime modifyTime;
 
 
-
-
     /**
      * 获取主键值
      *

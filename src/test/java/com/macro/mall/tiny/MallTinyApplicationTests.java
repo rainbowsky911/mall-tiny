@@ -25,11 +25,10 @@ public class MallTinyApplicationTests {
 
         List<ProductAttrInfo> info = pmsProductAttributeService.getProductAttrInfo(24L);
 
-        info.forEach(e->{
+        info.forEach(e -> {
             System.out.println(e);
         });
     }
-
 
 
 }

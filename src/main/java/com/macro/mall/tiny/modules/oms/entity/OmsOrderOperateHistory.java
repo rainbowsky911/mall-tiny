@@ -31,7 +31,6 @@ public class OmsOrderOperateHistory extends Model<OmsOrderOperateHistory> {
     private String note;
 
 
-
     /**
      * 获取主键值
      *

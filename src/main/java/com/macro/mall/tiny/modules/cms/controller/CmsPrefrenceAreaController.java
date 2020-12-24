@@ -29,6 +29,7 @@ public class CmsPrefrenceAreaController extends ApiController {
 
     /**
      * 查询所有优选
+     *
      * @return
      */
     @GetMapping("/listAll")

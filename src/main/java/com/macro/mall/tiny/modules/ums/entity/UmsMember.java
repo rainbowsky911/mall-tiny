@@ -58,8 +58,6 @@ public class UmsMember extends Model<UmsMember> {
     private Integer historyIntegration;
 
 
-
-
     /**
      * 获取主键值
      *

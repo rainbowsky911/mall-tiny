@@ -38,8 +38,6 @@ public class OmsCompanyAddress extends Model<OmsCompanyAddress> {
     private String detailAddress;
 
 
-
-
     /**
      * 获取主键值
      *

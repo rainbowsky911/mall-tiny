@@ -28,8 +28,6 @@ public class PmsMemberPrice extends Model<PmsMemberPrice> {
     private String memberLevelName;
 
 
-
-
     /**
      * 获取主键值
      *

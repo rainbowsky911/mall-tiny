@@ -8,6 +8,7 @@ import java.util.List;
 
 /**
  * 前台商品自定义Dao
+ *
  * @author 51473
  */
 public interface PortalProductDao {
@@ -15,6 +16,7 @@ public interface PortalProductDao {
 
     /**
      * 获取促销商品列表
+     *
      * @param ids
      * @return
      */

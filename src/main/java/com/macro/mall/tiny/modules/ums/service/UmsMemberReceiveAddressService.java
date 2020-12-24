@@ -16,6 +16,7 @@ public interface UmsMemberReceiveAddressService extends IService<UmsMemberReceiv
 
     /**
      * 返回当前用户收获地址
+     *
      * @return
      */
     List<UmsMemberReceiveAddress> memberReceiveAddressList();

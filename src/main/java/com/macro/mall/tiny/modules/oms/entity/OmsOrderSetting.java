@@ -30,7 +30,6 @@ public class OmsOrderSetting extends Model<OmsOrderSetting> {
     private Integer commentOvertime;
 
 
-
     /**
      * 获取主键值
      *

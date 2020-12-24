@@ -34,7 +34,7 @@ public class ConfirmOrderResult {
 
     @Data
     @Accessors(chain = true)
-    static class  CalcAmount {
+    static class CalcAmount {
 
         //订单商品总金额
         private BigDecimal totalAmount;

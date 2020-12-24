@@ -18,26 +18,30 @@ public interface PmsProductCategoryService extends IService<PmsProductCategory> 
 
     /**
      * 分类
+     *
      * @param parentId
      * @param pageSize
      * @param pageNum
      * @return
      */
-    Page<PmsProductCategory> getList(Long  parentId,Integer  pageSize,Integer  pageNum);
+    Page<PmsProductCategory> getList(Long parentId, Integer pageSize, Integer pageNum);
 
 
-    /**修改导航
+    /**
+     * 修改导航
+     *
      * @param ids
      * @param navStatus
      * @return
      */
-    int  updateNavStatus(Long ids, Integer navStatus);
+    int updateNavStatus(Long ids, Integer navStatus);
 
 
     int updateShowStatus(Long ids, Integer showStatus);
 
     /**
      * 获取分类及其子分类
+     *
      * @return
      */
     List<PmsProductCategoryWithChildrenItem> getCategoryListWithChild();

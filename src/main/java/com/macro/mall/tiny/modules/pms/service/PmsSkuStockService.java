@@ -16,6 +16,7 @@ public interface PmsSkuStockService extends IService<PmsSkuStock> {
 
     /**
      * 根据商品ID查询SKU信息
+     *
      * @param id
      * @return
      */

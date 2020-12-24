@@ -10,7 +10,7 @@ import java.util.List;
 
 
 @Data
-public class  PmsProductCategoryWithChildrenItem extends PmsProductCategory {
+public class PmsProductCategoryWithChildrenItem extends PmsProductCategory {
 
     @ApiModelProperty("子级分类")
     private List<PmsProductCategory> children;

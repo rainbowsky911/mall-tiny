@@ -47,7 +47,7 @@ public class PmsBrandController extends ApiController {
     @ApiOperation("修改品牌制造商状态")
     @RequestMapping(value = "/update/factoryStatus", method = RequestMethod.POST)
     @ResponseBody
-    public CommonResult updateFactoryStatus(@RequestParam("ids")Long ids, @RequestParam("factoryStatus") Integer factoryStatus) {
+    public CommonResult updateFactoryStatus(@RequestParam("ids") Long ids, @RequestParam("factoryStatus") Integer factoryStatus) {
         int count = pmsBrandService.updateFactoryStatus(ids, factoryStatus);
         if (count > 0) {
             return CommonResult.success(count);
@@ -81,9 +81,9 @@ public class PmsBrandController extends ApiController {
     @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult updateShowStatus(@PathVariable("id") Long id,
-                                        @Validated @RequestBody PmsBrandParam pmsBrandParam) {
+                                         @Validated @RequestBody PmsBrandParam pmsBrandParam) {
 
-        int count  = pmsBrandService.updateBrand(id, pmsBrandParam);
+        int count = pmsBrandService.updateBrand(id, pmsBrandParam);
         if (count > 0) {
             return CommonResult.success(count);
         } else {

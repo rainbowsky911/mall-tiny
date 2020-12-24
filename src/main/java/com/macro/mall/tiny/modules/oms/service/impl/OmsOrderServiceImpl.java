@@ -21,11 +21,11 @@ import org.springframework.stereotype.Service;
 public class OmsOrderServiceImpl extends ServiceImpl<OmsOrderDao, OmsOrder> implements OmsOrderService {
 
     @Autowired
-    private  OmsOrderDao orderDao;
+    private OmsOrderDao orderDao;
 
     @Override
     public IPage<OmsOrder> getList(Page page, OmsOrderQueryParam orderQueryParam) {
-        return orderDao.getList(page,orderQueryParam);
+        return orderDao.getList(page, orderQueryParam);
     }
 
     @Override

@@ -20,6 +20,7 @@ public interface PmsProductAttributeService extends IService<PmsProductAttribute
 
     /**
      * 获取商品分类对应属性
+     *
      * @param productCategoryId
      * @return
      */
@@ -28,6 +29,7 @@ public interface PmsProductAttributeService extends IService<PmsProductAttribute
 
     /**
      * 商品规格列表
+     *
      * @param id
      * @param pageSize
      * @param pageNum
@@ -39,12 +41,13 @@ public interface PmsProductAttributeService extends IService<PmsProductAttribute
 
     /**
      * 修改商品属性
+     *
      * @param id
      * @param pmsProductAttributeParam
      * @return
      */
     @Transactional
-    int  updatePmsProductAttribute(Long id, PmsProductAttributeParam pmsProductAttributeParam);
+    int updatePmsProductAttribute(Long id, PmsProductAttributeParam pmsProductAttributeParam);
 
 
     @Transactional

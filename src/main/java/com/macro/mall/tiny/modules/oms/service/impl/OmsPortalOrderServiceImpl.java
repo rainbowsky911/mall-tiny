@@ -16,7 +16,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class OmsPortalOrderServiceImpl  implements OmsPortalOrderService {
+public class OmsPortalOrderServiceImpl implements OmsPortalOrderService {
     @Autowired
     private UmsMemberService memberService;
     @Autowired
@@ -34,8 +34,8 @@ public class OmsPortalOrderServiceImpl  implements OmsPortalOrderService {
         ConfirmOrderResult result = new ConfirmOrderResult();
         //获取购物车信息
         //UmsMember currentMember = memberService.getCurrentMember();
-        UmsMember currentMember =new UmsMember().setId(1L).setIntegration(5000);
-        List<CartPromotionItem> cartPromotionItemList = cartItemService.listPromotion(currentMember.getId(),cartIds);
+        UmsMember currentMember = new UmsMember().setId(1L).setIntegration(5000);
+        List<CartPromotionItem> cartPromotionItemList = cartItemService.listPromotion(currentMember.getId(), cartIds);
         result.setCartPromotionItemList(cartPromotionItemList);
 
         //获取用户收货地址列表

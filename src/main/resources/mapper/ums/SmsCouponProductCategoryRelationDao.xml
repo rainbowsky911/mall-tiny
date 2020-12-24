@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.macro.mall.tiny.modules.sms.dao.SmsCouponProductCategoryRelationDao">
+
+    <resultMap type="com.macro.mall.tiny.modules.sms.entity.SmsCouponProductCategoryRelation"
+               id="SmsCouponProductCategoryRelationMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="couponId" column="coupon_id" jdbcType="INTEGER"/>
+        <result property="productCategoryId" column="product_category_id" jdbcType="INTEGER"/>
+        <result property="productCategoryName" column="product_category_name" jdbcType="VARCHAR"/>
+        <result property="parentCategoryName" column="parent_category_name" jdbcType="VARCHAR"/>
+    </resultMap>
+
+
+
+</mapper>

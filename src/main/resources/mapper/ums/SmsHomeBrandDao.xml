@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.macro.mall.tiny.modules.sms.dao.SmsHomeBrandDao">
+
+    <resultMap type="com.macro.mall.tiny.modules.sms.entity.SmsHomeBrand" id="SmsHomeBrandMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="brandId" column="brand_id" jdbcType="INTEGER"/>
+        <result property="brandName" column="brand_name" jdbcType="VARCHAR"/>
+        <result property="recommendStatus" column="recommend_status" jdbcType="INTEGER"/>
+        <result property="sort" column="sort" jdbcType="INTEGER"/>
+    </resultMap>
+
+
+
+</mapper>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.macro.mall.tiny.modules.sms.dao.SmsFlashPromotionLogDao">
+
+    <resultMap type="com.macro.mall.tiny.modules.sms.entity.SmsFlashPromotionLog" id="SmsFlashPromotionLogMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="memberId" column="member_id" jdbcType="INTEGER"/>
+        <result property="productId" column="product_id" jdbcType="INTEGER"/>
+        <result property="memberPhone" column="member_phone" jdbcType="VARCHAR"/>
+        <result property="productName" column="product_name" jdbcType="VARCHAR"/>
+        <result property="subscribeTime" column="subscribe_time" jdbcType="TIMESTAMP"/>
+        <result property="sendTime" column="send_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+
+
+</mapper>

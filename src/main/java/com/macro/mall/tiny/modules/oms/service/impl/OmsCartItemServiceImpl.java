@@ -1,16 +1,23 @@
 package com.macro.mall.tiny.modules.oms.service.impl;
 
+import cn.hutool.core.collection.CollUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.macro.mall.tiny.modules.oms.dao.OmsCartItemDao;
+import com.macro.mall.tiny.modules.oms.dto.CartPromotionItem;
 import com.macro.mall.tiny.modules.oms.entity.OmsCartItem;
 import com.macro.mall.tiny.modules.oms.service.OmsCartItemService;
+import com.macro.mall.tiny.modules.oms.service.OmsPromotionService;
 import com.macro.mall.tiny.modules.ums.service.UmsMemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
+import org.springframework.util.ObjectUtils;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * 购物车表(OmsCartItem)表服务实现类
@@ -20,6 +27,9 @@ import java.util.List;
  */
 @Service("omsCartItemService")
 public class OmsCartItemServiceImpl extends ServiceImpl<OmsCartItemDao, OmsCartItem> implements OmsCartItemService {
+
+    @Autowired
+    private OmsPromotionService promotionService;
 
     @Autowired
     private UmsMemberService memberService;
@@ -42,6 +52,26 @@ public class OmsCartItemServiceImpl extends ServiceImpl<OmsCartItemDao, OmsCartI
             updateById(existCartItem);
         }
         return count;
+    }
+
+    @Override
+    public List<CartPromotionItem> listPromotion(Long memberId, List<Long> cartIds) {
+        List<OmsCartItem> cartItemList = list(memberId);
+        if (CollUtil.isNotEmpty(cartIds)) {
+            cartItemList = cartItemList.stream().filter(item -> cartIds.contains(item.getId())).collect(Collectors.toList());
+        }
+        List<CartPromotionItem> cartPromotionItemList = new ArrayList<>();
+        if (!CollectionUtils.isEmpty(cartItemList)) {
+            cartPromotionItemList = promotionService.calcCartPromotion(cartItemList);
+        }
+        return cartPromotionItemList;
+    }
+
+
+    public List<OmsCartItem> list(Long memberId) {
+        return list(new LambdaQueryWrapper<OmsCartItem>()
+                .eq(!ObjectUtils.isEmpty(memberId), OmsCartItem::getMemberId, memberId)
+                .eq(OmsCartItem::getDeleteStatus, 0));
     }
 
 

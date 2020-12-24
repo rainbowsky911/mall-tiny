@@ -7,7 +7,9 @@ import org.junit.Test;
 
 import javax.annotation.Resource;
 
-public class OmsOrderTest extends  MallTinyApplicationTests {
+public class
+
+OmsOrderTest extends  MallTinyApplicationTests {
 
 
     @Resource

@@ -41,7 +41,6 @@ public class OmsCartItemServiceImpl extends ServiceImpl<OmsCartItemDao, OmsCartI
             existCartItem.setQuantity(existCartItem.getQuantity() + cartItem.getQuantity());
             updateById(existCartItem);
         }
-        count =1;
         return count;
     }
 

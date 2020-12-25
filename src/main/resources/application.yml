@@ -49,3 +49,4 @@ secure:
       - /order/**
       - /cartItem/**
       - /home/**
+      - /member/**

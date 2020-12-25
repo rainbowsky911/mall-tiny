@@ -2,6 +2,8 @@ package com.macro.mall.tiny.modules.ums.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.macro.mall.tiny.common.DateUtil;
+import com.macro.mall.tiny.modules.cms.entity.CmsSubject;
+import com.macro.mall.tiny.modules.pms.entity.PmsProduct;
 import com.macro.mall.tiny.modules.sms.entity.SmsFlashPromotion;
 import com.macro.mall.tiny.modules.sms.entity.SmsFlashPromotionSession;
 import com.macro.mall.tiny.modules.sms.entity.SmsHomeAdvertise;
@@ -51,6 +53,31 @@ public class HomeServiceImpl implements HomeService {
         result.setSubjectList(homeDao.getRecommendSubjectList(0, 4));
         return result;
     }
+
+    @Override
+    public List<PmsProduct> hotProductList(Integer pageNum, Integer pageSize) {
+        int offset = pageSize * (pageNum - 1);
+        return homeDao.getHotProductList(offset, pageSize);
+    }
+
+    @Override
+    public List<PmsProduct> newProductList(Integer pageSize, Integer pageNum) {
+        int offset = pageSize * (pageNum - 1);
+        return homeDao.getNewProductList(offset, pageSize);
+    }
+
+    @Override
+    public List<PmsProduct> recommendProductList(Integer pageSize, Integer pageNum) {
+        int offset = pageSize * (pageNum - 1);
+        return homeDao.getNewProductList(offset, pageSize);
+    }
+
+    @Override
+    public List<CmsSubject> subjectList(Integer pageSize, Integer pageNum) {
+        int offset = pageSize * (pageNum - 1);
+        return homeDao.getRecommendSubjectList(offset, pageSize);
+    }
+
 
     private HomeFlashPromotion getHomeFlashPromotion() {
         HomeFlashPromotion homeFlashPromotion = new HomeFlashPromotion();

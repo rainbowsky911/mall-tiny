@@ -13,6 +13,7 @@ public interface MemberAttentionService {
 
     /**
      * 取消关注
+     *
      * @param brandId
      * @return
      */

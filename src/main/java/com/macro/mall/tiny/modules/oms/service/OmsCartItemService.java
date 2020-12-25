@@ -33,19 +33,23 @@ public interface OmsCartItemService extends IService<OmsCartItem> {
 
     /**
      * 修改购物车商品数量
+     *
      * @param id
      * @param quantity
      * @return
      */
-    int  updateQuantity(Long id, Integer quantity);
+    int updateQuantity(Long id, Integer quantity);
 
-    /**清空购物车
+    /**
+     * 清空购物车
+     *
      * @return
      */
     int clearOmsCartItems();
 
     /**
      * 删除购物车某个商品
+     *
      * @param ids
      * @return
      */
@@ -53,6 +57,7 @@ public interface OmsCartItemService extends IService<OmsCartItem> {
 
     /**
      * 修改购物车中商品的规格
+     *
      * @param cartItem
      * @return
      */

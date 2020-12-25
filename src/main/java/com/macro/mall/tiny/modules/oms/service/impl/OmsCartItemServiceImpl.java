@@ -109,7 +109,7 @@ public class OmsCartItemServiceImpl extends ServiceImpl<OmsCartItemDao, OmsCartI
         boolean update = update(new LambdaUpdateWrapper<OmsCartItem>()
                 .set(OmsCartItem::getDeleteStatus, 1)
                 .eq(OmsCartItem::getMemberId, 1)
-                .in(OmsCartItem::getId,ids));
+                .in(OmsCartItem::getId, ids));
         if (update) {
             return 1;
         } else {

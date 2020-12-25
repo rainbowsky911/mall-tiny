@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+
 @Controller
 @Api(tags = "MemberCollectionController", description = "会员收藏管理")
 @RequestMapping("/member/productCollection")
@@ -45,8 +46,8 @@ public class MemberProductCollectionController {
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<Page<MemberProductCollection>> list(@RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum,
-                                                                  @RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize) {
-        Page<MemberProductCollection> page = memberCollectionService.list(pageNum,pageSize);
+                                                            @RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize) {
+        Page<MemberProductCollection> page = memberCollectionService.list(pageNum, pageSize);
         return CommonResult.success(page);
     }
 

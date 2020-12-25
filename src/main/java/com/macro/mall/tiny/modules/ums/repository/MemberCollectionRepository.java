@@ -12,7 +12,7 @@ public interface MemberCollectionRepository
 
     MemberProductCollection findByMemberIdAndProductId(Long memberId, Long productId);
 
-    int  deleteByMemberIdAndProductId(Long id, Long productId);
+    int deleteByMemberIdAndProductId(Long id, Long productId);
 
     Page<MemberProductCollection> findByMemberId(Long id, Pageable pageable);
 

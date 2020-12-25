@@ -42,7 +42,7 @@ public class MemberCollectionServiceImpl implements MemberCollectionService {
     @Override
     public int delete(Long productId) {
         UmsMember member = new UmsMember().setId(1L).setNickname("kobe").setIcon("xxx");
-       return memberCollectionRepository.deleteByMemberIdAndProductId(member.getId(),productId);
+        return memberCollectionRepository.deleteByMemberIdAndProductId(member.getId(), productId);
     }
 
     @Override

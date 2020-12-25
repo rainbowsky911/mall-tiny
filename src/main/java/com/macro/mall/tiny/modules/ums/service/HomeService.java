@@ -16,7 +16,9 @@ public interface HomeService {
      */
     public HomeContentResult content();
 
-    /**分页获取人气推荐商品
+    /**
+     * 分页获取人气推荐商品
+     *
      * @param pageNum
      * @param pageSize
      * @return
@@ -25,13 +27,16 @@ public interface HomeService {
 
     /**
      * 分页获取新品推荐商品
+     *
      * @param pageSize
      * @param pageNum
      * @return
      */
     List<PmsProduct> newProductList(Integer pageSize, Integer pageNum);
 
-    /**分页获取推荐商品
+    /**
+     * 分页获取推荐商品
+     *
      * @param pageSize
      * @param pageNum
      * @return
@@ -40,6 +45,7 @@ public interface HomeService {
 
     /**
      * 根据分类获取专题
+     *
      * @param pageSize
      * @param pageNum
      * @return

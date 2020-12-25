@@ -35,9 +35,9 @@ public class MemberAttentionController {
     @ResponseBody
     public CommonResult delete(Long brandId) {
         int count = memberAttentionService.delete(brandId);
-        if(count>0){
+        if (count > 0) {
             return CommonResult.success(count);
-        }else{
+        } else {
             return CommonResult.failed();
         }
     }
@@ -46,8 +46,8 @@ public class MemberAttentionController {
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<Page<MemberBrandAttention>> list(@RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum,
-                                                               @RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize) {
-        Page<MemberBrandAttention> page = memberAttentionService.list(pageNum,pageSize);
+                                                         @RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize) {
+        Page<MemberBrandAttention> page = memberAttentionService.list(pageNum, pageSize);
         return CommonResult.success(page);
     }
 

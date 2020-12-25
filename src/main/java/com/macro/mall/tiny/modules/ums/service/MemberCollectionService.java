@@ -22,6 +22,7 @@ public interface MemberCollectionService {
 
     /**
      * 查看收藏详情
+     *
      * @return
      */
     MemberProductCollection detail(Long productId);

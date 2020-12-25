@@ -50,3 +50,5 @@ secure:
       - /cartItem/**
       - /home/**
       - /member/**
+      - /admin/**
+      - /cart/**

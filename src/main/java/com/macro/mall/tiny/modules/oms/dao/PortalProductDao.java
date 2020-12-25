@@ -1,6 +1,7 @@
 package com.macro.mall.tiny.modules.oms.dao;
 
 import com.macro.mall.tiny.modules.oms.dto.PromotionProduct;
+import com.macro.mall.tiny.modules.oms.entity.CartProduct;
 import com.macro.mall.tiny.modules.pms.entity.PmsProduct;
 import org.apache.ibatis.annotations.Param;
 
@@ -24,4 +25,12 @@ public interface PortalProductDao {
 
 
     List<PmsProduct> listPromotionProductList();
+
+
+    /**
+     * 获取购物车商品信息
+     * @param id
+     * @return
+     */
+    CartProduct getCartProduct(@Param("id") Long id);
 }

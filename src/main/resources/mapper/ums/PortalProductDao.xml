@@ -50,4 +50,46 @@
         select  *from pms_product
     </select>
 
+
+    <resultMap id="getCartProduct" type="com.macro.mall.tiny.modules.oms.entity.CartProduct"
+               extends="com.macro.mall.tiny.modules.pms.dao.PmsProductDao.PmsProductMap">
+
+        <collection property="skuStockList" columnPrefix="sku_"
+                    resultMap="com.macro.mall.tiny.modules.pms.dao.PmsSkuStockDao.PmsSkuStockMap">
+        </collection>
+
+        <collection property="productAttributeList" columnPrefix="pa_"
+                    resultMap="com.macro.mall.tiny.modules.pms.dao.PmsProductAttributeDao.PmsProductAttributeMap">
+        </collection>
+
+    </resultMap>
+
+    <select id="getCartProduct" resultType="com.macro.mall.tiny.modules.oms.entity.CartProduct">
+                    SELECT
+            p.id id,
+            p.`name` NAME,
+            p.sub_title subTitle,
+            p.price price,
+            p.pic pic,
+            p.product_attribute_category_id productAttributeCategoryId,
+            p.stock stock,
+            pa.id pa_id,
+            pa.`name` pa_name,
+            ps.id sku_id,
+            ps.sku_code sku_code,
+            ps.price sku_price,
+            ps.stock sku_stock,
+            ps.pic sku_pic
+        FROM
+            pms_product p
+            LEFT JOIN pms_product_attribute pa ON pa.product_attribute_category_id = p.product_attribute_category_id
+            LEFT JOIN pms_sku_stock ps ON ps.product_id = p.id
+        WHERE
+            p.id = #{id}
+            AND pa.type = 0
+        ORDER BY
+            pa.sort DESC
+
+    </select>
+
 </mapper>

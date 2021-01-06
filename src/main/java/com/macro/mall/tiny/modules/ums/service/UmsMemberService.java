@@ -17,4 +17,12 @@ public interface UmsMemberService extends IService<UmsMember> {
      * @return
      */
     UmsMember getCurrentMember();
+
+    /**
+     * 更新会员使用积分
+     * @param memberId
+     * @param integration
+     * @return
+     */
+    int updateIntegration(Long memberId, Integer integration);
 }

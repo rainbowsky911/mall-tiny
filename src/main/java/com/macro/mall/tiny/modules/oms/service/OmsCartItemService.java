@@ -65,4 +65,11 @@ public interface OmsCartItemService extends IService<OmsCartItem> {
     int updateAttr(OmsCartItem cartItem);
 
     CartProduct getCartProduct(Long productId);
+
+    /**
+     * 根据会员ID获取购物车列表
+     * @param memberId
+     * @return
+     */
+    List<OmsCartItem> getOmsCartByUserId(long memberId);
 }

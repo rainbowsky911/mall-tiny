@@ -2,6 +2,7 @@ package com.macro.mall.tiny.modules.ums.service.impl;
 
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.json.JSONUtil;
+import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.macro.mall.tiny.common.AuthConstant;
 import com.macro.mall.tiny.common.api.ResultCode;
@@ -44,5 +45,21 @@ public class UmsMemberServiceImpl extends ServiceImpl<UmsMemberDao, UmsMember> i
             memberCacheService.setMember(member);
             return member;
         }
+    }
+
+    @Override
+    public int updateIntegration(Long memberId, Integer integration) {
+        int count = 0;
+        if (memberId != null && integration != null) {
+            boolean status = update(new LambdaUpdateWrapper<UmsMember>()
+                    .eq(UmsMember::getId, memberId)
+                    .set(UmsMember::getIntegration, integration));
+            if (status) {
+                count = 1;
+            } else {
+                count = 0;
+            }
+        }
+        return count;
     }
 }

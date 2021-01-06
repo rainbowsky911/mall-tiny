@@ -1,18 +1,13 @@
 package com.macro.mall.tiny.modules.oms.service.impl;
 
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.macro.mall.tiny.modules.oms.dao.OmsOrderItemDao;
-import com.macro.mall.tiny.modules.oms.entity.OmsCartItem;
 import com.macro.mall.tiny.modules.oms.entity.OmsOrderItem;
 import com.macro.mall.tiny.modules.oms.service.OmsCartItemService;
 import com.macro.mall.tiny.modules.oms.service.OmsOrderItemService;
-import com.macro.mall.tiny.modules.ums.entity.UmsMember;
 import com.macro.mall.tiny.modules.ums.service.UmsMemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 /**
  * 订单中所包含的商品(OmsOrderItem)表服务实现类
@@ -28,6 +23,8 @@ public class OmsOrderItemServiceImpl extends ServiceImpl<OmsOrderItemDao, OmsOrd
 
     @Autowired
     private UmsMemberService memberService;
+
+
 
 
 }

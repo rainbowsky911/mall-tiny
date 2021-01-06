@@ -46,7 +46,7 @@ public class OmsCartItemController extends ApiController {
     public CommonResult<List<OmsCartItem>> getList(
             @RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize,
             @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum) {
-        List<OmsCartItem> list = omsCartItemService.list(null);
+        List<OmsCartItem> list = omsCartItemService.getOmsCartByUserId(1L);
         return CommonResult.success(list);
     }
 

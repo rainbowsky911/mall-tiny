@@ -141,6 +141,12 @@ public class OmsCartItemServiceImpl extends ServiceImpl<OmsCartItemDao, OmsCartI
         return null;
     }
 
+    @Override
+    public List<OmsCartItem> getOmsCartByUserId(long memberId) {
+        return list( new LambdaQueryWrapper<OmsCartItem>().eq(OmsCartItem::getMemberId, memberId)
+                .eq(OmsCartItem::getDeleteStatus,0));
+    }
+
 
     public List<OmsCartItem> list(Long memberId) {
         return list(new LambdaQueryWrapper<OmsCartItem>()

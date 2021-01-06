@@ -16,4 +16,19 @@ public interface OmsPortalOrderService {
      * @param cartIds
      */
     ConfirmOrderResult generateConfirmOrder(List<Long> cartIds);
+
+
+    /**
+     * 根据orderId删除订单信息
+     * @param orderId
+     * @return
+     */
+    int deleteOrder(Long orderId);
+
+
+    /**
+     * 自动取消超时订单
+     * @return
+     */
+    Integer cancelTimeOutOrder();
 }

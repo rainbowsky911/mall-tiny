@@ -1,7 +1,9 @@
 package com.macro.mall.tiny.modules.pms.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.macro.mall.tiny.modules.oms.entity.OmsOrderItem;
 import com.macro.mall.tiny.modules.pms.entity.PmsSkuStock;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -21,4 +23,14 @@ public interface PmsSkuStockService extends IService<PmsSkuStock> {
      * @return
      */
     List<PmsSkuStock> getProductId(Long id);
+
+
+    /**
+     * 解除取消订单的库存锁定
+     * @param orderItemList
+     * @return
+     */
+    int releaseSkuStockLock(@Param("itemList") List<OmsOrderItem> orderItemList);
+
+
 }

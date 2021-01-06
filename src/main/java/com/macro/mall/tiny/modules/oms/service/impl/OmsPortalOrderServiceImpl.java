@@ -84,7 +84,7 @@ public class OmsPortalOrderServiceImpl implements OmsPortalOrderService {
         UmsMember umsMember = new UmsMember().setId(1L);
         OmsOrder omsOrder = omsOrderService.getById(orderId);
 
-        if (omsOrder.getMemberId().equals(umsMember.getId())) {
+        if (!omsOrder.getMemberId().equals(umsMember.getId())) {
             Asserts.fail("不能删除他人订单！");
         }
         if (omsOrder.getStatus() == 3 || omsOrder.getStatus() == 4) {
@@ -94,7 +94,7 @@ public class OmsPortalOrderServiceImpl implements OmsPortalOrderService {
             Asserts.fail("只能删除已完成或已关闭的订单！");
         }
 
-        return 0;
+        return 1;
     }
 
     @Transactional

@@ -24,7 +24,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
-
+//
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -130,6 +130,33 @@ public class OmsPortalOrderServiceImpl implements OmsPortalOrderService {
 
         }
         return count;
+    }
+
+    @Override
+    public void confirmReceiveOrder(Long orderId) {
+        UmsMember umsMember = new UmsMember().setId(1L);
+        OmsOrder omsOrder = omsOrderService.getById(orderId);
+
+        if (!omsOrder.getMemberId().equals(umsMember.getId())) {
+            Asserts.fail("不能确认他人订单！");
+        }
+
+        //TODO 应该定义枚举类 来避免使用魔法值
+        if (omsOrder.getStatus() != 2) {
+            Asserts.fail("该订单还未发货！");
+        }
+
+        omsOrder.setStatus(3);
+        omsOrder.setConfirmStatus(1);
+        omsOrder.setReceiveTime(LocalDateTime.now());
+        omsOrderService.updateById(omsOrder);
+
+
+    }
+
+    @Override
+    public void sendDelayMessageCancelOrder(Long orderId) {
+
     }
 
     /**

@@ -31,4 +31,17 @@ public interface OmsPortalOrderService {
      * @return
      */
     Integer cancelTimeOutOrder();
+
+    /**
+     * 用户确认收货
+     * @param orderId
+     */
+    void confirmReceiveOrder(Long orderId);
+
+
+    /**
+     * 发送延时消息 自动取消超时订单
+     * @param orderId
+     */
+    void sendDelayMessageCancelOrder(Long orderId);
 }

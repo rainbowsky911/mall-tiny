@@ -44,4 +44,21 @@ public class OmsPortalOrderController {
     }
 
 
+    @ApiOperation("用户确认收货")
+    @RequestMapping(value = "/confirmReceiveOrder", method = RequestMethod.POST)
+    @ResponseBody
+    public CommonResult confirmReceiveOrder(@RequestParam("orderId") Long orderId) {
+        portalOrderService.confirmReceiveOrder(orderId);
+        return CommonResult.success(null);
+    }
+
+
+    @ApiOperation("取消单个超时订单")
+    @RequestMapping(value = "/cancelOrder", method = RequestMethod.POST)
+    @ResponseBody
+    public CommonResult cancelOrder(Long orderId) {
+        portalOrderService.sendDelayMessageCancelOrder(orderId);
+        return CommonResult.success(null);
+    }
+
 }

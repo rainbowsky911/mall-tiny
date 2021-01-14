@@ -52,3 +52,4 @@ secure:
       - /member/**
       - /admin/**
       - /cart/**
+      - /esProduct/**

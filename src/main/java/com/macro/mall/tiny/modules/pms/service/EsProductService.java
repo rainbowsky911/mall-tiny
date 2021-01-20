@@ -43,4 +43,17 @@ public interface EsProductService {
      * @return
      */
     Page<EsProduct> search(String keyword, Integer pageNum, Integer pageSize);
+
+
+    /**
+     * 根据关键词 名称 副标题综合查询
+     * @param keyword
+     * @param brandId
+     * @param productCategoryId
+     * @param pageNum
+     * @param pageSize
+     * @param sort
+     * @return
+     */
+    Page<EsProduct> search(String keyword, Long brandId, Long productCategoryId, Integer pageNum, Integer pageSize, Integer sort);
 }

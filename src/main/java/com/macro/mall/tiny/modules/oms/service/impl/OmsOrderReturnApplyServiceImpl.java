@@ -2,8 +2,10 @@ package com.macro.mall.tiny.modules.oms.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.macro.mall.tiny.modules.oms.dao.OmsOrderReturnApplyDao;
+import com.macro.mall.tiny.modules.oms.dto.OmsOrderReturnApplyResult;
 import com.macro.mall.tiny.modules.oms.entity.OmsOrderReturnApply;
 import com.macro.mall.tiny.modules.oms.service.OmsOrderReturnApplyService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -15,4 +17,11 @@ import org.springframework.stereotype.Service;
 @Service("omsOrderReturnApplyService")
 public class OmsOrderReturnApplyServiceImpl extends ServiceImpl<OmsOrderReturnApplyDao, OmsOrderReturnApply> implements OmsOrderReturnApplyService {
 
+    @Autowired
+    OmsOrderReturnApplyDao orderApplyDao;
+
+    @Override
+    public OmsOrderReturnApplyResult getItem(Long id) {
+        return orderApplyDao.getItem(id);
+    }
 }

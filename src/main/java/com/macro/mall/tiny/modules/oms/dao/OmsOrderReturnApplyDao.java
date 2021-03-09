@@ -1,6 +1,7 @@
 package com.macro.mall.tiny.modules.oms.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.macro.mall.tiny.modules.oms.dto.OmsOrderReturnApplyResult;
 import com.macro.mall.tiny.modules.oms.entity.OmsOrderReturnApply;
 
 /**
@@ -11,4 +12,6 @@ import com.macro.mall.tiny.modules.oms.entity.OmsOrderReturnApply;
  */
 public interface OmsOrderReturnApplyDao extends BaseMapper<OmsOrderReturnApply> {
 
+
+    OmsOrderReturnApplyResult getItem(Long id);
 }

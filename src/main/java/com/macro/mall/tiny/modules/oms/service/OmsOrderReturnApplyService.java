@@ -1,6 +1,7 @@
 package com.macro.mall.tiny.modules.oms.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.macro.mall.tiny.modules.oms.dto.OmsOrderReturnApplyResult;
 import com.macro.mall.tiny.modules.oms.entity.OmsOrderReturnApply;
 
 /**
@@ -11,4 +12,7 @@ import com.macro.mall.tiny.modules.oms.entity.OmsOrderReturnApply;
  */
 public interface OmsOrderReturnApplyService extends IService<OmsOrderReturnApply> {
 
+
+
+    OmsOrderReturnApplyResult getItem(Long id);
 }

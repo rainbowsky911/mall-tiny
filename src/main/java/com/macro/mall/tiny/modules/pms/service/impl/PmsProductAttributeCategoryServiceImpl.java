@@ -1,20 +1,14 @@
 package com.macro.mall.tiny.modules.pms.service.impl;
 
 import cn.hutool.core.util.ObjectUtil;
-import cn.hutool.core.util.StrUtil;
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.macro.mall.tiny.modules.pms.dao.PmsProductAttributeCategoryDao;
-import com.macro.mall.tiny.modules.pms.dto.PmsProductAttributeParam;
-import com.macro.mall.tiny.modules.pms.entity.PmsProductAttribute;
 import com.macro.mall.tiny.modules.pms.entity.PmsProductAttributeCategory;
 import com.macro.mall.tiny.modules.pms.service.PmsProductAttributeCategoryService;
 import com.macro.mall.tiny.modules.ums.dto.PmsProductAttributeCategoryItem;
-import com.macro.mall.tiny.modules.ums.model.UmsAdmin;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -35,7 +29,7 @@ public class PmsProductAttributeCategoryServiceImpl extends ServiceImpl<PmsProdu
 
     @Override
     public List<PmsProductAttributeCategoryItem> getListWithAttr() {
-        return null;
+        return pmsProductAttributeCategoryDao.getListWithAttr();
     }
 
     @Override

@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: 8087
 
 
 spring:
@@ -53,3 +53,4 @@ secure:
       - /admin/**
       - /cart/**
       - /esProduct/**
+      - /**/**

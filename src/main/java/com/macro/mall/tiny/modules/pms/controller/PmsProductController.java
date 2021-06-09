@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.macro.mall.tiny.common.api.CommonPage;
 import com.macro.mall.tiny.common.api.CommonResult;
 import com.macro.mall.tiny.modules.pms.dto.PmsProductParam;
+import com.macro.mall.tiny.modules.pms.dto.PmsProductQueryParam;
 import com.macro.mall.tiny.modules.pms.dto.PmsProductResult;
 import com.macro.mall.tiny.modules.pms.entity.PmsProduct;
 import com.macro.mall.tiny.modules.pms.service.PmsProductService;
@@ -45,10 +46,10 @@ public class PmsProductController extends ApiController {
     //TODO 商品信息的模糊查询
     @ApiOperation("商品列表")
     @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public CommonResult<CommonPage<PmsProduct>> getProductList(
-            @RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize,
-            @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum) {
-        Page<PmsProduct> list = pmsProductService.getList(pageSize, pageNum);
+    public CommonResult<CommonPage<PmsProduct>> getProductList(PmsProductQueryParam pmsProductParam,
+                                                               @RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize,
+                                                               @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum) {
+        Page<PmsProduct> list = pmsProductService.getList(pmsProductParam,pageSize, pageNum);
         return CommonResult.success(CommonPage.restPage(list));
     }
 
@@ -74,11 +75,14 @@ public class PmsProductController extends ApiController {
     }
 
 
-    @ApiOperation("修改上架状态")
-    @RequestMapping(value = "/update/publishStatus", method = RequestMethod.POST)
-    public CommonResult updatePublishStatus(@RequestParam("ids") Long ids, @RequestParam("publishStatus") Integer publishStatus) {
 
-        int count = pmsProductService.updatePublishStatus(ids, publishStatus);
+
+    @ApiOperation("批量修改删除状态")
+    @RequestMapping(value = "/update/deleteStatus", method = RequestMethod.POST)
+    @ResponseBody
+    public CommonResult updateDeleteStatus(@RequestParam("ids") List<Long> ids,
+                                           @RequestParam("deleteStatus") Integer deleteStatus) {
+        int count = pmsProductService.updateDeleteStatus(ids, deleteStatus);
         if (count > 0) {
             return CommonResult.success(count);
         } else {

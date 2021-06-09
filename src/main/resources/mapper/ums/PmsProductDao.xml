@@ -159,4 +159,28 @@
         </if>
     </select>
 
+
+    <resultMap type="com.macro.mall.tiny.modules.pms.dto.TestPmsProductParam" id="getUpdateinfo"
+               extends="com.macro.mall.tiny.modules.pms.dao.PmsProductDao.PmsProductMap">
+        <collection property="memberPriceList" columnPrefix="member_"
+                    resultMap="com.macro.mall.tiny.modules.pms.dao.PmsMemberPriceDao.PmsMemberPriceMap">
+        </collection>
+
+    </resultMap>
+    <select id="getUpdateinfo" resultMap="getUpdateinfo">
+        SELECT
+            *,
+            pm.id member_id,
+            pm.product_id member_product_id,
+            pm.member_level_id member_member_level_id,
+            pm.member_price member_member_price,
+            pm.member_level_name member_member_level_name
+        FROM
+            pms_product p
+                LEFT JOIN pms_member_price pm ON p.id = product_id
+
+        WHERE
+            p.id =#{id}
+    </select>
+
 </mapper>

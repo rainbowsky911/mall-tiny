@@ -16,6 +16,7 @@ import com.macro.mall.tiny.modules.pms.dao.PmsProductDao;
 import com.macro.mall.tiny.modules.pms.dto.PmsProductParam;
 import com.macro.mall.tiny.modules.pms.dto.PmsProductQueryParam;
 import com.macro.mall.tiny.modules.pms.dto.PmsProductResult;
+import com.macro.mall.tiny.modules.pms.dto.TestPmsProductParam;
 import com.macro.mall.tiny.modules.pms.entity.*;
 import com.macro.mall.tiny.modules.pms.service.*;
 import org.apache.commons.lang3.ObjectUtils;
@@ -135,9 +136,16 @@ public class PmsProductServiceImpl extends ServiceImpl<PmsProductDao, PmsProduct
     }
 
     @Override
-    public Page<PmsProduct> getList(Integer pageSize, Integer pageNum) {
+    public Page<PmsProduct> getList(PmsProductQueryParam productQueryParam,Integer pageSize, Integer pageNum) {
         Page<PmsProduct> page = new Page<>(pageNum, pageSize);
-        return page(page, new QueryWrapper<PmsProduct>());
+        QueryWrapper<PmsProduct> wrapper = new QueryWrapper<>();
+        wrapper.like(ObjectUtils.isNotEmpty(productQueryParam.getKeyword()), "key_words", productQueryParam.getKeyword());
+        wrapper.like(ObjectUtils.isNotEmpty(productQueryParam.getBrandId()), "brand_id", productQueryParam.getBrandId());
+        wrapper.like(ObjectUtils.isNotEmpty(productQueryParam.getProductSn()), "product_sn", productQueryParam.getProductSn());
+        wrapper.like(ObjectUtils.isNotEmpty(productQueryParam.getPublishStatus()), "publish_status", productQueryParam.getPublishStatus());
+        wrapper.like(ObjectUtils.isNotEmpty(productQueryParam.getVerifyStatus()), "verify_status", productQueryParam.getVerifyStatus());
+        wrapper.like(ObjectUtils.isNotEmpty(productQueryParam.getProductCategoryId()), "product_category_id", productQueryParam.getProductCategoryId());
+        return page(page, wrapper);
     }
 
     @Override
@@ -259,6 +267,11 @@ public class PmsProductServiceImpl extends ServiceImpl<PmsProductDao, PmsProduct
     }
 
     @Override
+    public TestPmsProductParam getUpdateinfo(Long id) {
+        return pmsProductDao.getUpdateinfo(id);
+    }
+
+    @Override
     public IPage<PmsProduct> list(PmsProductQueryParam productQueryParam, Integer pageSize, Integer pageNum) {
         Page<PmsProduct> page = new Page<>(pageNum, pageSize);
         QueryWrapper<PmsProduct> wrapper = new QueryWrapper<>();
@@ -278,6 +291,14 @@ public class PmsProductServiceImpl extends ServiceImpl<PmsProductDao, PmsProduct
     @Override
     public IPage<List<PmsProduct>> getDynamic(Page page, PmsProductQueryParam param) {
         return pmsProductDao.getDynamic(page, param);
+    }
+
+    @Override
+    public int updateDeleteStatus(List<Long> ids, Integer deleteStatus) {
+        boolean result = update(new LambdaUpdateWrapper<PmsProduct>()
+                .set(ObjectUtil.isNotNull(deleteStatus), PmsProduct::getRecommandStatus, deleteStatus)
+                .eq(ObjectUtil.isNotNull(ids), PmsProduct::getId, ids));
+        return result==true?1:0;
     }
 
 }

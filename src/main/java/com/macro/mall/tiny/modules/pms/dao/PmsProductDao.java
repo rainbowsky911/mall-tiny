@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.macro.mall.tiny.modules.pms.dto.PmsProductQueryParam;
 import com.macro.mall.tiny.modules.pms.dto.PmsProductResult;
+import com.macro.mall.tiny.modules.pms.dto.TestPmsProductParam;
 import com.macro.mall.tiny.modules.pms.entity.PmsProduct;
 import org.apache.ibatis.annotations.Param;
 
@@ -28,4 +29,11 @@ public interface PmsProductDao extends BaseMapper<PmsProduct> {
     PmsProductResult getUpdateInfo(Long id);
 
     IPage<List<PmsProduct>> getDynamic(Page page, @Param("item") PmsProductQueryParam param);
+
+    /**
+     * 商品id和价格一对多查询
+     * @param id
+     * @return
+     */
+    TestPmsProductParam getUpdateinfo(@Param("id") Long id);
 }

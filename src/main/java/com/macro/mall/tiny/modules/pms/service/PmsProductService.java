@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.macro.mall.tiny.modules.pms.dto.PmsProductParam;
 import com.macro.mall.tiny.modules.pms.dto.PmsProductQueryParam;
 import com.macro.mall.tiny.modules.pms.dto.PmsProductResult;
+import com.macro.mall.tiny.modules.pms.dto.TestPmsProductParam;
 import com.macro.mall.tiny.modules.pms.entity.PmsProduct;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.transaction.annotation.Isolation;
@@ -40,7 +41,7 @@ public interface PmsProductService extends IService<PmsProduct> {
      * @param pageNum
      * @return
      */
-    Page<PmsProduct> getList(Integer pageSize, Integer pageNum);
+    Page<PmsProduct> getList(PmsProductQueryParam param,Integer pageSize, Integer pageNum);
 
     /**
      * 修改出版状态
@@ -87,6 +88,15 @@ public interface PmsProductService extends IService<PmsProduct> {
      */
     PmsProductResult getUpdateInfo(Long id);
 
+
+    /**
+     * 查看DTO商品信息
+     *
+     * @param id
+     * @return
+     */
+    TestPmsProductParam getUpdateinfo(Long id);
+
     /**
      * 分页查询
      *
@@ -99,4 +109,6 @@ public interface PmsProductService extends IService<PmsProduct> {
 
 
     IPage<List<PmsProduct>> getDynamic(Page page, @Param("item") PmsProductQueryParam param);
+
+    int updateDeleteStatus(List<Long> ids, Integer deleteStatus);
 }

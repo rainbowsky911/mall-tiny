@@ -35,7 +35,9 @@
 
     <resultMap id="returnApplyDetailResultMap" type="com.macro.mall.tiny.modules.oms.dto.OmsOrderReturnApplyResult"
                extends="baseMap">
-        <association property="companyAddress" resultMap="com.macro.mall.tiny.modules.oms.dao.OmsCompanyAddressDao.OmsCompanyAddressMap" columnPrefix="ca_"/>
+        <association property="companyAddress"
+                     resultMap="com.macro.mall.tiny.modules.oms.dao.OmsCompanyAddressDao.OmsCompanyAddressMap"
+                     columnPrefix="ca_"/>
 
     </resultMap>
 

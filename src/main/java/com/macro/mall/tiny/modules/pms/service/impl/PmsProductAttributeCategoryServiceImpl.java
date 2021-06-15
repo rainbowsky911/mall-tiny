@@ -55,4 +55,12 @@ public class PmsProductAttributeCategoryServiceImpl extends ServiceImpl<PmsProdu
         }
     }
 
+    @Override
+    public int create(String name) {
+        if (name != null) {
+            return save(new PmsProductAttributeCategory().setName(name)) == true ? 1 : 0;
+        }
+        return 0;
+    }
+
 }

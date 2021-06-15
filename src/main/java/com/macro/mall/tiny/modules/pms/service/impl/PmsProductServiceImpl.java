@@ -188,7 +188,7 @@ public class PmsProductServiceImpl extends ServiceImpl<PmsProductDao, PmsProduct
         this.pmsProductDao.updateById(product);
         Long productId = product.getId();
 
-        int count = 0;
+        int count ;
 
         pmsMemberPriceService.remove(new LambdaQueryWrapper<PmsMemberPrice>()
                 .eq(ObjectUtils.isNotEmpty(id), PmsMemberPrice::getProductId, id));
@@ -201,7 +201,7 @@ public class PmsProductServiceImpl extends ServiceImpl<PmsProductDao, PmsProduct
 
 
         /** 先删除
-         * 再耿勋库存信息
+         * 再更新库存信息
          */
         pmsSkuService.remove(new LambdaQueryWrapper<PmsSkuStock>()
                 .eq(ObjectUtils.isNotEmpty(id), PmsSkuStock::getProductId, id));
@@ -257,7 +257,7 @@ public class PmsProductServiceImpl extends ServiceImpl<PmsProductDao, PmsProduct
                 .stream()
                 .map(p -> p.setProductId(productId)).collect(Collectors.toList()));
         count = 1;
-        return 0;
+        return count;
     }
 
     @Override

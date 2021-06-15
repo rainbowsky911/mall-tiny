@@ -2,6 +2,7 @@ package com.macro.mall.tiny.modules.pms.service;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.macro.mall.tiny.modules.pms.dto.PmsProductCategoryParam;
 import com.macro.mall.tiny.modules.pms.dto.PmsProductCategoryWithChildrenItem;
 import com.macro.mall.tiny.modules.pms.entity.PmsProductCategory;
 
@@ -45,4 +46,10 @@ public interface PmsProductCategoryService extends IService<PmsProductCategory> 
      * @return
      */
     List<PmsProductCategoryWithChildrenItem> getCategoryListWithChild();
+
+    /**
+     * 根据id修改分类
+     * @return
+     */
+    int updateCategory(Long id, PmsProductCategoryParam pmsProductCategoryParam);
 }

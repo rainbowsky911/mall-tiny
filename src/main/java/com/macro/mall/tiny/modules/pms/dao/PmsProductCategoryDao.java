@@ -3,6 +3,7 @@ package com.macro.mall.tiny.modules.pms.dao;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.macro.mall.tiny.modules.pms.dto.PmsProductCategoryWithChildrenItem;
 import com.macro.mall.tiny.modules.pms.entity.PmsProductCategory;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -20,4 +21,12 @@ public interface PmsProductCategoryDao extends BaseMapper<PmsProductCategory> {
      * @return
      */
     List<PmsProductCategoryWithChildrenItem> getCategoryListWithChild();
+
+
+    /**
+     * 动态更新分类
+     * @param param
+     * @return
+     */
+    int updateCategory(@Param("param") PmsProductCategory param);
 }

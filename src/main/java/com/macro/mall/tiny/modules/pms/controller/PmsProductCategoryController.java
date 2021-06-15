@@ -8,10 +8,12 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.macro.mall.tiny.common.api.CommonPage;
 import com.macro.mall.tiny.common.api.CommonResult;
 import com.macro.mall.tiny.modules.pms.dao.PmsProductCategoryDao;
+import com.macro.mall.tiny.modules.pms.dto.PmsProductCategoryParam;
 import com.macro.mall.tiny.modules.pms.dto.PmsProductCategoryWithChildrenItem;
 import com.macro.mall.tiny.modules.pms.entity.PmsProductCategory;
 import com.macro.mall.tiny.modules.pms.service.PmsProductCategoryService;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -91,4 +93,19 @@ public class PmsProductCategoryController extends ApiController {
         List<PmsProductCategoryWithChildrenItem> list = pmsProductCategoryService.getCategoryListWithChild();
         return CommonResult.success(list);
     }
+
+    @ApiOperation("修改分类")
+    @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
+    public CommonResult update(@PathVariable("id")Long id,@Validated
+    @RequestBody PmsProductCategoryParam productCategoryParam) {
+
+        int count = pmsProductCategoryService.updateCategory(id,productCategoryParam);
+        if (count > 0) {
+            return CommonResult.success(count);
+        } else {
+            return CommonResult.failed();
+        }
+    }
+
+
 }

@@ -22,8 +22,6 @@
                id="getCategoryListWithChild">
         <result property="id" column="id" jdbcType="INTEGER"/>
         <result property="name" column="name" jdbcType="VARCHAR"/>
-
-
         <collection property="children"
                     ofType="com.macro.mall.tiny.modules.pms.entity.PmsProductCategory"
                     columnPrefix="child_">
@@ -41,6 +39,46 @@
             <result property="description" column="description" jdbcType="VARCHAR"/>
         </collection>
     </resultMap>
+    
+    <update id="updateCategory" parameterType="com.macro.mall.tiny.modules.pms.entity.PmsProductCategory">
+        update pms_product_category
+        <set>
+            <if test="param.parentId != null">
+                parent_id = #{param.parentId,jdbcType=BIGINT},
+            </if>
+            <if test="param.name != null">
+                name = #{param.name,jdbcType=VARCHAR},
+            </if>
+            <if test="param.level != null">
+                level = #{param.level,jdbcType=INTEGER},
+            </if>
+            <if test="param.productCount != null">
+                product_count = #{param.productCount,jdbcType=INTEGER},
+            </if>
+            <if test="param.productUnit != null">
+                product_unit = #{param.productUnit,jdbcType=VARCHAR},
+            </if>
+            <if test="param.navStatus != null">
+                nav_status = #{param.navStatus,jdbcType=INTEGER},
+            </if>
+            <if test="param.showStatus != null">
+                show_status = #{param.showStatus,jdbcType=INTEGER},
+            </if>
+            <if test="param.sort != null">
+                sort = #{param.sort,jdbcType=INTEGER},
+            </if>
+            <if test="param.icon != null">
+                icon = #{param.icon,jdbcType=VARCHAR},
+            </if>
+            <if test="param.keywords != null">
+                keywords = #{param.keywords,jdbcType=VARCHAR},
+            </if>
+            <if test="param.description != null">
+                description = #{param.description,jdbcType=LONGVARCHAR},
+            </if>
+        </set>
+        where id = #{param.id,jdbcType=BIGINT}
+    </update>
 
     <select id="getCategoryListWithChild" resultMap="getCategoryListWithChild">
                    SELECT

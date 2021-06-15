@@ -1,24 +1,18 @@
 package com.macro.mall.tiny.modules.pms.controller;
 
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.api.ApiController;
-import com.baomidou.mybatisplus.extension.api.R;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.macro.mall.tiny.common.api.CommonPage;
 import com.macro.mall.tiny.common.api.CommonResult;
-import com.macro.mall.tiny.modules.pms.dto.PmsProductAttributeParam;
 import com.macro.mall.tiny.modules.pms.entity.PmsProductAttributeCategory;
 import com.macro.mall.tiny.modules.pms.service.PmsProductAttributeCategoryService;
 import com.macro.mall.tiny.modules.ums.dto.PmsProductAttributeCategoryItem;
-import com.macro.mall.tiny.modules.ums.model.UmsAdmin;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -66,4 +60,27 @@ public class PmsProductAttributeCategoryController extends ApiController {
         }
     }
 
+    @ApiOperation("新建商品属性分类")
+    @RequestMapping(value = "/create", method = RequestMethod.POST)
+    @ResponseBody
+    public CommonResult create(@RequestParam String name) {
+        int count = pmsProductAttributeCategoryService.create(name);
+        if (count > 0) {
+            return CommonResult.success(count);
+        } else {
+            return CommonResult.failed();
+        }
+    }
+
+    @ApiOperation("删除商品属性分类")
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+    @ResponseBody
+    public CommonResult delete(@PathVariable("id") Long id) {
+        int count = pmsProductAttributeCategoryService.removeById(id) == true ? 1 : 0;
+        if (count > 0) {
+            return CommonResult.success(count);
+        } else {
+            return CommonResult.failed();
+        }
+    }
 }

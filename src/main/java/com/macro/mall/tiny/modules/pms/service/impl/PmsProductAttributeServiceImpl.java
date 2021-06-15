@@ -1,7 +1,6 @@
 package com.macro.mall.tiny.modules.pms.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.macro.mall.tiny.modules.pms.dao.PmsProductAttributeDao;
@@ -41,7 +40,7 @@ public class PmsProductAttributeServiceImpl extends ServiceImpl<PmsProductAttrib
     public Page<PmsProductAttribute> getList(Long id, Integer pageSize, Integer pageNum, Integer type) {
         Page<PmsProductAttribute> page = new Page<>(pageNum, pageSize);
         LambdaQueryWrapper<PmsProductAttribute> lambdaQueryWrapper = new LambdaQueryWrapper();
-        lambdaQueryWrapper.eq(PmsProductAttribute::getId, id);
+        lambdaQueryWrapper.eq(PmsProductAttribute::getProductAttributeCategoryId, id);
         lambdaQueryWrapper.eq(PmsProductAttribute::getType, type);
         return page(page, lambdaQueryWrapper);
     }

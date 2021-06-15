@@ -2,6 +2,7 @@ package com.macro.mall.tiny.modules.pms.entity;
 
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import lombok.Data;
+import lombok.experimental.Accessors;
 
 import java.io.Serializable;
 
@@ -13,6 +14,7 @@ import java.io.Serializable;
  */
 //@SuppressWarnings("serial")
 @Data
+@Accessors(chain = true)
 public class PmsProductAttributeCategory extends Model<PmsProductAttributeCategory> {
 
     private Long id;

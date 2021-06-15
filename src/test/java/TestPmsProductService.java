@@ -27,5 +27,6 @@ public class TestPmsProductService {
     public  void test1(){
         TestPmsProductParam param = productService.getUpdateinfo(10L);
         System.out.println(param);
+        System.out.println("hello");
     }
 }

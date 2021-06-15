@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.experimental.Accessors;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 /**
@@ -32,7 +33,7 @@ public class OmsOrderReturnApply extends Model<OmsOrderReturnApply> {
     //会员用户名
     private String memberUsername;
     //退款金额
-    private Double returnAmount;
+    private BigDecimal returnAmount;
     //退货人姓名
     private String returnName;
     //退货人电话

@@ -21,7 +21,7 @@ import java.util.List;
  * @since 2020-12-11 13:31:51
  */
 @RestController
-@RequestMapping("omsCompanyAddress")
+@RequestMapping("companyAddress")
 public class OmsCompanyAddressController extends ApiController {
     /**
      * 服务对象
